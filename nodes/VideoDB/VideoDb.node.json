@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-base.videodb",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Productivity", "Miscellaneous", "Utility"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.videodb.io/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.videodb.io/"
+			}
+		]
+	}
+}
