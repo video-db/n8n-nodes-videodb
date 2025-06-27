@@ -2,8 +2,10 @@ import videos from './videos';
 import rtstream from './rtstream';
 import audio from './audio';
 import image from './image';
+import client from './client';
+import collection from './collection';
 
-const allOperations = [...videos, ...rtstream, ...audio, ...image];
+const allOperations = [...videos, ...rtstream, ...audio, ...image, ...client, ...collection];
 
 const map = Object.fromEntries(allOperations.map((op) => [op.key, op]));
 

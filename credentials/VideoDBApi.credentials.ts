@@ -20,6 +20,14 @@ export class VideoDBApi implements ICredentialType {
 			required: true,
 			typeOptions: { password: true },
 		},
+		{
+			displayName: 'Base API URL',
+			name: 'baseUrl',
+			type: 'string',
+			default: 'https://api.videodb.io',
+			required: true,
+			description: 'The base URL for the VideoDB API',
+		},
 	];
 
 	authenticate: IAuthenticateGeneric = {
@@ -35,7 +43,7 @@ export class VideoDBApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			url: 'https://api.videodb.io/collection',
+			url: '={{$credentials.baseUrl}}/collection',
 			method: 'GET',
 			headers: {
 				'x-access-token': '={{$credentials.apiKey}}',

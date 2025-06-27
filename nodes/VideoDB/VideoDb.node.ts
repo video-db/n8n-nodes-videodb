@@ -13,26 +13,13 @@ export class VideoDb implements INodeType {
 		group: ['transform'],
 		icon: 'file:VideoDB.svg',
 		version: 1,
-		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
+		subtitle: '={{ $parameter["operation"] }}',
 		description: 'Interact with the VideoDB API',
 		defaults: { name: 'VideoDB' },
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [{ name: 'videoDBApi', required: true }],
 		properties: [
-			{
-				displayName: 'Resource',
-				name: 'resource',
-				type: 'options',
-				options: [
-					{ name: 'Video', value: 'video' },
-					{ name: 'RTStream', value: 'rtstream' },
-					{ name: 'Audio', value: 'audio' },
-					{ name: 'Image', value: 'image' },
-				],
-				default: 'video',
-				noDataExpression: true,
-			},
 			{
 				displayName: 'Operation',
 				name: 'operation',
@@ -41,11 +28,6 @@ export class VideoDb implements INodeType {
 				options: OPERATION_DETAILS,
 				default: 'fetchVideos',
 				required: true,
-				displayOptions: {
-					show: {
-						resource: ['video', 'rtstream', 'audio', 'image'],
-					},
-				},
 			},
 			...OPERATION_PARAMETERS,
 		],
@@ -62,13 +44,15 @@ export class VideoDb implements INodeType {
 			for (const param of operation.parameters) {
 				params[param.name] = this.getNodeParameter(param.name, i);
 			}
+			const credentials = await this.getCredentials('videoDBApi');
+			const baseUrl = credentials.baseUrl || 'https://api.videodb.io';
 			const endpoint =
 				typeof operation.endpoint === 'function' ? operation.endpoint(params) : operation.endpoint;
 			const requestOptions: any = {
 				method: operation.method,
-				url: `https://api.videodb.io${endpoint}`,
+				url: `${baseUrl}${endpoint}`,
 				headers: {
-					'x-access-token': (await this.getCredentials('videoDBApi'))!.apiKey!,
+					'x-access-token': credentials.apiKey!,
 				},
 			};
 			if (operation.method === 'GET') {
