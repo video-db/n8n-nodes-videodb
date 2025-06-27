@@ -1,0 +1,75 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # ───────────── Build / test ─────────────
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+      - run: npm run build
+
+  # ───────────── Publish to npm ─────────────
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      # Read the version from package.json
+      - name: Get npm version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1
+
+      # Decide dist-tag
+      - name: Decide npm dist-tag
+        id: npm-tag
+        run: |
+          VERSION=${{ steps.package-version.outputs.current-version }}
+          if [[ $VERSION == *beta* || $VERSION == *alpha* || $VERSION == *rc* ]]; then
+            echo "tag=next" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Create a Git tag   e.g. v0.2.3
+      - name: Create Git tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: 'v${{ steps.package-version.outputs.current-version }}'
+
+      # Generate a GitHub Release with notes
+      - name: Extract release notes
+        id: release-notes
+        uses: ffurrer2/extract-release-notes@v1
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: 'v${{ steps.package-version.outputs.current-version }}'
+          name: 'Release v${{ steps.package-version.outputs.current-version }}'
+          body: '${{ steps.release-notes.outputs.release_notes }}'
+          make_latest: true
+
+      # Install deps again so `npm publish` can run prepublishOnly hook
+      - run: npm ci
+
+      # Publish
+      - run: npm publish --access public --tag ${{ steps.npm-tag.outputs.tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
