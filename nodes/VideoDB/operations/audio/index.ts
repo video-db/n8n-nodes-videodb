@@ -17,22 +17,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	{
-		key: 'deleteAudio',
-		endpoint: (params: any) => `/audio/${params.audio_id}`,
-		method: 'DELETE',
-		details: {
-			name: 'Delete Audio',
-			value: 'deleteAudio',
-			description: 'Permanently deletes the audio file',
-			action: 'Delete Audio',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('deleteAudio'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
 ];
 
 export default operations;

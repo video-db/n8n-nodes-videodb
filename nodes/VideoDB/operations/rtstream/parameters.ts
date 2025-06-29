@@ -2,14 +2,6 @@ import type { INodeProperties } from 'n8n-workflow';
 
 const parameters: INodeProperties[] = [];
 
-// Shared properties
-const collectionIdProperty: INodeProperties = {
-	displayName: 'Collection ID',
-	name: 'collection_id',
-	type: 'string',
-	required: true,
-	default: '',
-};
 const rtstreamIdProperty: INodeProperties = {
 	displayName: 'RTStream ID',
 	name: 'rtstream_id',
@@ -31,41 +23,6 @@ const alertIdProperty: INodeProperties = {
 	required: true,
 	default: '',
 };
-
-// connect_rtstream
-parameters.push(
-	{
-		...collectionIdProperty,
-		description: 'The ID of the collection to which the rtstream will belong',
-		displayOptions: { show: { operation: ['connectRTStream'] } },
-	},
-	{
-		displayName: 'URL',
-		name: 'url',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'The URL of the rtstream source',
-		displayOptions: { show: { operation: ['connectRTStream'] } },
-	},
-	{
-		displayName: 'Name',
-		name: 'name',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'The name for the rtstream',
-		displayOptions: { show: { operation: ['connectRTStream'] } },
-	},
-	{
-		displayName: 'Sample Rate',
-		name: 'sample_rate',
-		type: 'number',
-		default: 0,
-		description: 'The sample rate of the rtstream',
-		displayOptions: { show: { operation: ['connectRTStream'] } },
-	},
-);
 
 // get_rtstream, start, stop, generate_stream, index_scenes, list_scene_indexes, get_scene_index, get_scenes, startSceneIndex, stopSceneIndex, create_alert, list_alerts, enable_alert, disable_alert
 parameters.push({
@@ -120,17 +77,26 @@ parameters.push(
 	{
 		displayName: 'Extraction Type',
 		name: 'extraction_type',
-		type: 'string',
+		type: 'options',
+		options: [{ name: 'Time', value: 'time' }],
 		default: 'time',
-		description: 'Type of extraction (e.g., time)',
+		description: 'Type of extraction',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
 	{
-		displayName: 'Extraction Config (JSON)',
-		name: 'extraction_config',
-		type: 'json',
-		default: '',
-		description: 'Configuration for the scene extraction',
+		displayName: 'Frame Count',
+		name: 'frame_count',
+		type: 'number',
+		default: 2,
+		description: 'Number of frames per scene (default: 2)',
+		displayOptions: { show: { operation: ['indexScenes'] } },
+	},
+	{
+		displayName: 'Time Interval (seconds)',
+		name: 'time',
+		type: 'number',
+		default: 5,
+		description: 'Time interval for scene extraction (default: 5)',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
 	{

@@ -83,44 +83,6 @@ const operations = [
 		}),
 	},
 	{
-		key: 'uploadVideo',
-		endpoint: (params: any) => `/collection/${params.collection_id}/upload`,
-		method: 'POST',
-		details: {
-			name: 'Upload Video',
-			value: 'uploadVideo',
-			description: 'Upload a video by URL to a collection',
-			action: 'Upload Video',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('uploadVideo'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			url: params.url,
-			name: params.name,
-			description: params.description,
-			callback_url: params.callback_url,
-			media_type: params.media_type,
-		}),
-	},
-	{
-		key: 'deleteVideo',
-		endpoint: (params: any) => `/video/${params.video_id}`,
-		method: 'DELETE',
-		details: {
-			name: 'Delete Video',
-			value: 'deleteVideo',
-			description: 'Deletes a video',
-			action: 'Delete a video',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('deleteVideo'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
-	{
 		key: 'removeStorage',
 		endpoint: (params: any) => `/video/${params.video_id}/storage`,
 		method: 'DELETE',
@@ -225,20 +187,6 @@ const operations = [
 			additional_notes: params.additional_notes,
 			callback_url: params.callback_url,
 		}),
-	},
-	{
-		key: 'getScenes',
-		endpoint: (params: any) => `/video/${params.video_id}/index`,
-		method: 'GET',
-		details: {
-			name: 'Get Scenes (Deprecated)',
-			value: 'getScenes',
-			description: 'Retrieves the scenes of the video (Deprecated)',
-			action: 'Get scenes',
-		},
-		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('getScenes')),
-		buildQuery: () => ({ index_type: 'scene' }),
-		buildBody: () => ({}),
 	},
 	{
 		key: 'extractScenes',

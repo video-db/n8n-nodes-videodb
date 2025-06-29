@@ -1,60 +1,6 @@
 import parameters from './parameters';
 
 const operations = [
-	// connect_rtstream
-	{
-		key: 'connectRTStream',
-		endpoint: '/rtstream',
-		method: 'POST',
-		details: {
-			name: 'Connect RTStream',
-			value: 'connectRTStream',
-			description: 'Connect to a new real-time stream and add it to the collection',
-			action: 'Connect RTStream',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('connectRTStream'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			collection_id: params.collection_id,
-			url: params.url,
-			name: params.name,
-			sample_rate: params.sample_rate,
-		}),
-	},
-	// get_rtstream
-	{
-		key: 'getRTStream',
-		endpoint: (params: any) => `/rtstream/${params.rtstream_id}`,
-		method: 'GET',
-		details: {
-			name: 'Get RTStream',
-			value: 'getRTStream',
-			description: 'Retrieve a specific rtstream by its ID',
-			action: 'Get RTStream',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getRTStream'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
-	// list_rtstreams
-	{
-		key: 'listRTStreams',
-		endpoint: '/rtstream',
-		method: 'GET',
-		details: {
-			name: 'List RTStreams',
-			value: 'listRTStreams',
-			description: 'List all rtstreams within the collection',
-			action: 'List RTStreams',
-		},
-		parameters: [],
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
 	// start
 	{
 		key: 'startRTStream',
@@ -123,7 +69,10 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
 			extraction_type: params.extraction_type,
-			extraction_config: params.extraction_config,
+			extraction_config: {
+				frame_count: params.frame_count !== undefined ? Number(params.frame_count) : 2,
+				time: params.time !== undefined ? Number(params.time) : 5,
+			},
 			prompt: params.prompt,
 			model_name: params.model_name,
 			model_config: params.model_config,

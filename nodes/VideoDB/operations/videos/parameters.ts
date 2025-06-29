@@ -44,67 +44,11 @@ parameters.push({
 	displayOptions: { show: { operation: ['fetchVideos'] } },
 });
 
-// Upload a video
-parameters.push(
-	{
-		...collectionIdProperty,
-		description: 'The ID of the collection to upload the video to',
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-	{
-		displayName: 'URL',
-		name: 'url',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'The URL of the video to upload',
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-	{
-		displayName: 'Name',
-		name: 'name',
-		type: 'string',
-		required: true,
-		default: '',
-		description: 'The name for the uploaded video',
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-	{
-		displayName: 'Description',
-		name: 'description',
-		type: 'string',
-		default: '',
-		description: 'A description for the uploaded video',
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-	{
-		...callbackUrlProperty,
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-	{
-		displayName: 'Media Type',
-		name: 'media_type',
-		type: 'string',
-		default: 'video',
-		description: 'Type of media (e.g., video, audio, image)',
-		displayOptions: { show: { operation: ['uploadVideo'] } },
-	},
-);
-
 // Index a video (spoken words)
 parameters.push(
 	{
 		...videoIdProperty,
 		description: 'The ID of the video to index',
-		displayOptions: { show: { operation: ['indexSpokenWords'] } },
-	},
-	{
-		displayName: 'Index Type',
-		name: 'index_type',
-		type: 'string',
-		required: true,
-		default: 'spoken_word',
-		description: 'Must be "spoken_word"',
 		displayOptions: { show: { operation: ['indexSpokenWords'] } },
 	},
 	{
@@ -188,7 +132,6 @@ parameters.push(
 			{ name: 'Semantic', value: 'semantic' },
 			{ name: 'Keyword', value: 'keyword' },
 			{ name: 'Scene', value: 'scene' },
-			{ name: 'LLM', value: 'llm' },
 		],
 		required: true,
 		default: 'semantic',
@@ -243,12 +186,10 @@ parameters.push(
 
 const videoOperations = [
 	'deleteVideo',
-	'removeStorage',
 	'generateStream',
 	'generateThumbnail',
 	'getDefaultThumbnail',
 	'getThumbnails',
-	'getScenes',
 	'extractScenes',
 	'listSceneCollections',
 	'deleteSceneCollection',
@@ -261,10 +202,24 @@ const videoOperations = [
 	'translateTranscript',
 ];
 
+for (const operation of videoOperations) {
+	parameters.push({
+		...videoIdProperty,
+		description: 'The ID of the video',
+		displayOptions: { show: { operation: [operation] } },
+	});
+}
+
 parameters.push({
 	...videoIdProperty,
 	description: 'The ID of the video',
-	displayOptions: { show: { operation: videoOperations } },
+	displayOptions: { show: { operation: ['removeStorage'] } },
+});
+
+parameters.push({
+	...collectionIdProperty,
+	description: 'The ID of the collection',
+	displayOptions: { show: { operation: ['removeStorage'] } },
 });
 
 // Generate Stream
@@ -286,17 +241,29 @@ parameters.push(
 		description: 'The length of the video stream to generate',
 		displayOptions: { show: { operation: ['generateStream'] } },
 	},
+	{
+		...collectionIdProperty,
+		description: 'The ID of the collection',
+		displayOptions: { show: { operation: ['generateStream'] } },
+	},
 );
 
 // Generate Thumbnail
-parameters.push({
-	displayName: 'Time',
-	name: 'time',
-	type: 'number',
-	default: 1,
-	description: 'The specific time in seconds from which to generate the thumbnail',
-	displayOptions: { show: { operation: ['generateThumbnail'] } },
-});
+parameters.push(
+	{
+		displayName: 'Time',
+		name: 'time',
+		type: 'number',
+		default: 1,
+		description: 'The specific time in seconds from which to generate the thumbnail',
+		displayOptions: { show: { operation: ['generateThumbnail'] } },
+	},
+	{
+		...collectionIdProperty,
+		description: 'The ID of the collection',
+		displayOptions: { show: { operation: ['generateThumbnail'] } },
+	},
+);
 
 // Translate Transcript
 parameters.push(
@@ -337,7 +304,7 @@ parameters.push(
 			{ name: 'Shot Based', value: 'shot' },
 			{ name: 'Time Based', value: 'time' },
 		],
-		default: 'shot',
+		default: 'time',
 		description: 'The method for scene extraction',
 		displayOptions: { show: { operation: ['extractScenes'] } },
 	},

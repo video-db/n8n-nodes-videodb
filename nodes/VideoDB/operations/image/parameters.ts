@@ -31,10 +31,4 @@ parameters.push(
 	},
 );
 
-// delete
-parameters.push({
-	...imageIdProperty,
-	displayOptions: { show: { operation: ['deleteImage'] } },
-});
-
 export default parameters;

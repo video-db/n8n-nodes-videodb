@@ -150,7 +150,7 @@ parameters.push(
 		displayName: 'Quality',
 		name: 'quality',
 		type: 'number',
-		default: 0,
+		default: 23,
 		description: 'Quality for the output',
 		displayOptions: { show: { operation: ['transcode'] } },
 	},
@@ -224,7 +224,7 @@ parameters.push(
 		displayName: 'Result Threshold',
 		name: 'result_threshold',
 		type: 'number',
-		default: 0,
+		default: 5,
 		displayOptions: { show: { operation: ['youtubeSearch'] } },
 	},
 	{

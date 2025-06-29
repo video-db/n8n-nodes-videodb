@@ -31,10 +31,4 @@ parameters.push(
 	},
 );
 
-// delete
-parameters.push({
-	...audioIdProperty,
-	displayOptions: { show: { operation: ['deleteAudio'] } },
-});
-
 export default parameters;

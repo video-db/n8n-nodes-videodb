@@ -149,6 +149,7 @@ const operations = [
 		buildBody: (params: any) => ({
 			prompt: params.prompt,
 			duration: params.duration,
+			audio_type: 'music',
 			callback_url: params.callback_url,
 		}),
 	},
@@ -170,6 +171,7 @@ const operations = [
 		buildBody: (params: any) => ({
 			prompt: params.prompt,
 			duration: params.duration,
+			audio_type: 'sound_effect',
 			callback_url: params.callback_url,
 		}),
 	},
@@ -352,7 +354,7 @@ const operations = [
 			p.displayOptions?.show?.operation?.includes('makePrivate'),
 		),
 		buildQuery: () => ({}),
-		buildBody: () => ({}),
+		buildBody: () => ({ is_public: false }),
 	},
 	// makePublic
 	{
@@ -367,7 +369,7 @@ const operations = [
 		},
 		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('makePublic')),
 		buildQuery: () => ({}),
-		buildBody: () => ({}),
+		buildBody: () => ({ is_public: true }),
 	},
 	// search
 	{
@@ -408,6 +410,7 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
 			query: params.query,
+			search_type: 'llm',
 		}),
 	},
 	// upload

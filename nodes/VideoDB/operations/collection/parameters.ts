@@ -39,7 +39,7 @@ parameters.push(
 		displayOptions: { show: { operation: ['connectRtstream'] } },
 	},
 	{
-		displayName: 'URL',
+		displayName: 'RTSP URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -377,15 +377,20 @@ parameters.push(
 	{
 		displayName: 'Search Type',
 		name: 'search_type',
-		type: 'string',
-		default: '',
+		default: 'semantic',
+		type: 'options',
+		options: [{ name: 'Semantic', value: 'semantic' }],
 		displayOptions: { show: { operation: ['search'] } },
 	},
 	{
 		displayName: 'Index Type',
 		name: 'index_type',
-		type: 'string',
-		default: '',
+		default: 'spoken_word',
+		type: 'options',
+		options: [
+			{ name: 'Spoken Word', value: 'spoken_word' },
+			{ name: 'Scene', value: 'scene' },
+		],
 		displayOptions: { show: { operation: ['search'] } },
 	},
 	{
@@ -444,8 +449,13 @@ parameters.push(
 	{
 		displayName: 'Media Type',
 		name: 'media_type',
-		type: 'string',
-		default: '',
+		type: 'options',
+		options: [
+			{ name: 'Video', value: 'video' },
+			{ name: 'Audio', value: 'audio' },
+			{ name: 'Image', value: 'image' },
+		],
+		default: 'video',
 		displayOptions: { show: { operation: ['upload'] } },
 	},
 	{

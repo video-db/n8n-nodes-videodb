@@ -141,11 +141,15 @@ const operations = [
 			source: params.source,
 			callback_url: params.callback_url,
 			mode: params.mode,
-			resolution: params.resolution,
-			quality: params.quality,
-			framerate: params.framerate,
-			resize_mode: params.resize_mode,
-			mute: params.mute,
+			video_config: {
+				resolution: params.resolution,
+				quality: params.quality || 23,
+				framerate: params.framerate,
+				resize_mode: params.resize_mode || 'crop',
+			},
+			audio_config: {
+				mute: params.mute,
+			},
 		}),
 	},
 	// updateCollection
