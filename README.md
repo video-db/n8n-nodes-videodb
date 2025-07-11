@@ -54,10 +54,10 @@ You should familiarize yourself with the various response objects, to understand
 
 To streamline and accelerate the development process, follow these steps:
 
-1. Install _n8n_ globally (`pnpm add -g n8n`).
+1. Install _n8n_ globally (`npm add -g n8n`).
 2. Set the `N8N_CUSTOM_EXTENSIONS` environment variable to the `/dist` directory of this repository.
 3. Enable hot reloading by setting the `N8N_DEV_RELOAD` environment variable to `true`.
-4. Run `pnpm run dev` to watch for changes and automatically rebuild the node as you develop.
+4. Run `npm run dev` to watch for changes and automatically rebuild the node as you develop.
 5. Start n8n with `n8n start` to launch the editor UI.
 6. Open the n8n editor UI in your browser.
 
