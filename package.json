@@ -1,15 +1,15 @@
 {
 	"name": "@videodb/n8n-nodes-videodb",
 	"version": "0.1.0",
-	"description": "",
+	"description": "An n8n node for VideoDB",
 	"keywords": [
 		"n8n-community-node-package"
 	],
 	"license": "MIT",
 	"homepage": "",
 	"author": {
-		"name": "",
-		"email": ""
+		"name": "Om Gate",
+		"email": "om@videodb.io"
 	},
 	"repository": {
 		"type": "git",
