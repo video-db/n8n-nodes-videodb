@@ -45,6 +45,7 @@ module.exports = {
 				'n8n-nodes-base/cred-class-field-properties-assertion': 'error',
 				'n8n-nodes-base/cred-class-field-type-options-password-missing': 'error',
 				'n8n-nodes-base/cred-class-name-missing-oauth2-suffix': 'error',
+				'n8n-nodes-base/cred-class-name-unsuffixed': 'error',
 				'n8n-nodes-base/cred-filename-against-convention': 'error',
 			},
 		},
