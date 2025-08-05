@@ -1,8 +1,9 @@
-import type {
-	IExecuteFunctions,
-	INodeExecutionData,
-	INodeType,
-	INodeTypeDescription,
+import {
+	NodeConnectionType,
+	type IExecuteFunctions,
+	type INodeExecutionData,
+	type INodeType,
+	type INodeTypeDescription,
 } from 'n8n-workflow';
 import { OPERATIONS, OPERATION_DETAILS, OPERATION_PARAMETERS } from './operations';
 
@@ -16,8 +17,8 @@ export class VideoDb implements INodeType {
 		subtitle: '={{ $parameter["operation"] }}',
 		description: 'Interact with the VideoDB API',
 		defaults: { name: 'VideoDB' },
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [{ name: 'videoDBApi', required: true }],
 		properties: [
 			{
