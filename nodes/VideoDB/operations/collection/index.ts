@@ -21,6 +21,7 @@ const operations = [
 			url: params.url,
 			name: params.name,
 			sample_rate: params.sample_rate,
+			audio: params.audio,
 		}),
 	},
 	// deleteAudio
@@ -433,6 +434,47 @@ const operations = [
 			description: params.description,
 			callback_url: params.callback_url,
 		}),
+	},
+	// recordMeeting
+	{
+		key: 'recordMeeting',
+		endpoint: (params: any) => `/collection/${params.collection_id}/meeting/record`,
+		method: 'POST',
+		details: {
+			name: 'Record Meeting',
+			value: 'recordMeeting',
+			description: 'Records a meeting using a bot and saves it to the collection',
+			action: 'Record Meeting',
+		},
+		parameters: parameters.filter((p) =>
+			p.displayOptions?.show?.operation?.includes('recordMeeting'),
+		),
+		buildQuery: () => ({}),
+		buildBody: (params: any) => ({
+			meeting_url: params.meeting_url,
+			bot_name: params.bot_name,
+			bot_image_url: params.bot_image_url,
+			meeting_title: params.meeting_title,
+			callback_url: params.callback_url,
+			callback_data: params.callback_data,
+			time_zone: params.time_zone || 'UTC',
+			realtime_stream: params.realtime_stream,
+		}),
+	},
+	// getMeeting
+	{
+		key: 'getMeeting',
+		endpoint: (params: any) => `/collection/${params.collection_id}/meeting/${params.meeting_id}`,
+		method: 'GET',
+		details: {
+			name: 'Get Meeting',
+			value: 'getMeeting',
+			description: 'Retrieves a specific meeting recording by its ID from a collection',
+			action: 'Get Meeting',
+		},
+		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('getMeeting')),
+		buildQuery: () => ({}),
+		buildBody: () => ({}),
 	},
 ];
 
