@@ -289,6 +289,47 @@ parameters.push(
 	},
 );
 
+// generateText
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Prompt',
+		name: 'prompt',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Model Name',
+		name: 'model_name',
+		type: 'options',
+		options: [
+			{ name: 'Basic', value: 'basic' },
+			{ name: 'Pro', value: 'pro' },
+			{ name: 'Ultra', value: 'ultra' },
+		],
+		required: true,
+		default: 'basic',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Response Type',
+		name: 'response_type',
+		type: 'options',
+		options: [
+			{ name: 'Text', value: 'text' },
+			{ name: 'JSON', value: 'json' },
+		],
+		required: true,
+		default: 'text',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+);
+
 // getAudio
 parameters.push(
 	{

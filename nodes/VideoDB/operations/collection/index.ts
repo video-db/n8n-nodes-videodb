@@ -218,6 +218,27 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
+	// generateText
+	{
+		key: 'generateText',
+		endpoint: (params: any) => `/collection/${params.collection_id}/generate/text`,
+		method: 'POST',
+		details: {
+			name: 'Generate Text',
+			value: 'generateText',
+			description: 'Generates text from a prompt using AI models',
+			action: 'Generate Text',
+		},
+		parameters: parameters.filter((p) =>
+			p.displayOptions?.show?.operation?.includes('generateText'),
+		),
+		buildQuery: () => ({}),
+		buildBody: (params: any) => ({
+			prompt: params.prompt,
+			model_name: params.model_name,
+			response_type: params.response_type,
+		}),
+	},
 	// getAudio
 	{
 		key: 'getAudio',
