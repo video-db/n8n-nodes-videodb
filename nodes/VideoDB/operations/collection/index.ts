@@ -239,6 +239,25 @@ const operations = [
 			response_type: params.response_type,
 		}),
 	},
+	// generateTranscript
+	{
+		key: 'generateTranscript',
+		endpoint: (params: any) => `/video/${params.video_id}/transcription`,
+		method: 'POST',
+		details: {
+			name: 'Generate Transcript',
+			value: 'generateTranscript',
+			description: 'Generates a transcript for a video',
+			action: 'Generate Transcript',
+		},
+		parameters: parameters.filter((p) =>
+			p.displayOptions?.show?.operation?.includes('generateTranscript'),
+		),
+		buildQuery: () => ({}),
+		buildBody: (params: any) => ({
+			force: params.force || false,
+		}),
+	},
 	// getAudio
 	{
 		key: 'getAudio',

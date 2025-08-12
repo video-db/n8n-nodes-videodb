@@ -330,6 +330,22 @@ parameters.push(
 	},
 );
 
+// generateTranscript
+parameters.push(
+	{
+		...videoIdProperty,
+		displayOptions: { show: { operation: ['generateTranscript'] } },
+	},
+	{
+		displayName: 'Force',
+		name: 'force',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to force regeneration of transcript even if one already exists',
+		displayOptions: { show: { operation: ['generateTranscript'] } },
+	},
+);
+
 // getAudio
 parameters.push(
 	{
