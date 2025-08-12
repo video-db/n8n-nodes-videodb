@@ -51,13 +51,31 @@ const operations = [
 		parameters: parameters.filter((p) =>
 			p.displayOptions?.show?.operation?.includes('getTranscript'),
 		),
-		buildQuery: (params: any) => ({
-			start: params.start,
-			end: params.end,
-			segmenter: params.segmenter,
-			length: params.length,
-			force: params.force,
-		}),
+		buildQuery: (params: any) => {
+			const queryObj: Record<string, any> = {};
+
+			if (params.start) {
+				queryObj.start = params.start;
+			}
+
+			if (params.segmenter) {
+				queryObj.segmenter = params.segmenter;
+			}
+
+			if (params.force) {
+				queryObj.force = params.force;
+			}
+
+			if (params.end > 0) {
+				queryObj.end = params.end;
+			}
+
+			if (params.length > 1) {
+				queryObj.length = params.length;
+			}
+
+			return queryObj;
+		},
 		buildBody: () => ({}),
 	},
 	{
