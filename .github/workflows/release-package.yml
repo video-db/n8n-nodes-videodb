@@ -34,7 +34,7 @@ jobs:
       # Read the version from package.json
       - name: Get npm version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1
+        uses: martinbeentjes/npm-get-version-action@main
 
       # Decide dist-tag
       - name: Decide npm dist-tag
