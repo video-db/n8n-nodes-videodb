@@ -6,7 +6,7 @@
 		"n8n-community-node-package"
 	],
 	"license": "MIT",
-	"homepage": "",
+	"homepage": "https://videodb.io",
 	"author": {
 		"name": "Om Gate",
 		"email": "om@videodb.io"
@@ -15,9 +15,12 @@
 		"type": "git",
 		"url": "https://github.com/video-db/n8n-nodes-videodb.git"
 	},
+	"engines": {
+		"node": ">=20.15"
+	},
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && gulp build:icons",
+		"build": "npx rimraf dist && tsc && gulp build:icons",
 		"dev": "tsc --watch",
 		"format": "prettier nodes credentials --write",
 		"lint": "eslint nodes credentials package.json",
@@ -37,12 +40,12 @@
 		]
 	},
 	"devDependencies": {
-		"@typescript-eslint/parser": "~5.45",
-		"eslint-plugin-n8n-nodes-base": "^1.11.0",
-		"gulp": "^4.0.2",
-		"n8n-workflow": "*",
-		"prettier": "^2.7.1",
-		"typescript": "~4.8.4"
+		"@typescript-eslint/parser": "~8.32.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-n8n-nodes-base": "^1.16.3",
+		"gulp": "^5.0.0",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.2"
 	},
 	"peerDependencies": {
 		"n8n-workflow": "*"

@@ -61,6 +61,13 @@ parameters.push(
 		default: 0,
 		displayOptions: { show: { operation: ['connectRtstream'] } },
 	},
+	{
+		displayName: 'Audio',
+		name: 'audio',
+		type: 'boolean',
+		default: false,
+		displayOptions: { show: { operation: ['connectRtstream'] } },
+	},
 );
 
 // deleteAudio
@@ -282,6 +289,63 @@ parameters.push(
 	},
 );
 
+// generateText
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Prompt',
+		name: 'prompt',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Model Name',
+		name: 'model_name',
+		type: 'options',
+		options: [
+			{ name: 'Basic', value: 'basic' },
+			{ name: 'Pro', value: 'pro' },
+			{ name: 'Ultra', value: 'ultra' },
+		],
+		required: true,
+		default: 'basic',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+	{
+		displayName: 'Response Type',
+		name: 'response_type',
+		type: 'options',
+		options: [
+			{ name: 'Text', value: 'text' },
+			{ name: 'JSON', value: 'json' },
+		],
+		required: true,
+		default: 'text',
+		displayOptions: { show: { operation: ['generateText'] } },
+	},
+);
+
+// generateTranscript
+parameters.push(
+	{
+		...videoIdProperty,
+		displayOptions: { show: { operation: ['generateTranscript'] } },
+	},
+	{
+		displayName: 'Force',
+		name: 'force',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to force regeneration of transcript even if one already exists',
+		displayOptions: { show: { operation: ['generateTranscript'] } },
+	},
+);
+
 // getAudio
 parameters.push(
 	{
@@ -478,6 +542,88 @@ parameters.push(
 		type: 'string',
 		default: '',
 		displayOptions: { show: { operation: ['upload'] } },
+	},
+);
+
+// recordMeeting
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Meeting URL',
+		name: 'meeting_url',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Bot Name',
+		name: 'bot_name',
+		type: 'string',
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Bot Image URL',
+		name: 'bot_image_url',
+		type: 'string',
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Meeting Title',
+		name: 'meeting_title',
+		type: 'string',
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Callback URL',
+		name: 'callback_url',
+		type: 'string',
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Callback Data',
+		name: 'callback_data',
+		type: 'json',
+		default: '',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Time Zone',
+		name: 'time_zone',
+		type: 'string',
+		default: 'UTC',
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+	{
+		displayName: 'Realtime Stream',
+		name: 'realtime_stream',
+		type: 'boolean',
+		default: false,
+		displayOptions: { show: { operation: ['recordMeeting'] } },
+	},
+);
+
+// getMeeting
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['getMeeting'] } },
+	},
+	{
+		displayName: 'Meeting ID',
+		description: 'The ID of the meeting to get',
+		name: 'meeting_id',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: { show: { operation: ['getMeeting'] } },
 	},
 );
 

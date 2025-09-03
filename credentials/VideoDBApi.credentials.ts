@@ -26,7 +26,7 @@ export class VideoDBApi implements ICredentialType {
 			type: 'string',
 			default: 'https://api.videodb.io',
 			required: true,
-			description: 'The base URL for the VideoDB API',
+			description: 'The base URL for the VideoDB API.',
 		},
 	];
 
