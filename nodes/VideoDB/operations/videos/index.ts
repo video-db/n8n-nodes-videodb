@@ -1,22 +1,22 @@
 import parameters from './parameters';
 
 const operations = [
-	{
-		key: 'fetchVideos',
-		endpoint: '/video',
-		method: 'GET',
-		details: {
-			name: 'Fetch Videos',
-			value: 'fetchVideos',
-			description: 'List all videos in a collection',
-			action: 'Fetch Videos',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('fetchVideos'),
-		),
-		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'fetchVideos',
+	// 	endpoint: '/video',
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Fetch Videos',
+	// 		value: 'fetchVideos',
+	// 		description: 'List all videos in a collection',
+	// 		action: 'Fetch Videos',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('fetchVideos'),
+	// 	),
+	// 	buildQuery: (params: any) => ({ collection_id: params.collection_id }),
+	// 	buildBody: () => ({}),
+	// },
 	{
 		key: 'indexSpokenWords',
 		endpoint: (params: any) => `/video/${params.video_id}/index`,
@@ -83,7 +83,7 @@ const operations = [
 		endpoint: '/search',
 		method: 'POST',
 		details: {
-			name: 'Search',
+			name: 'Search in a Video',
 			value: 'search',
 			description: 'Search for a query within a video',
 			action: 'Search in a video',
@@ -100,22 +100,22 @@ const operations = [
 			dynamic_score_percentage: params.dynamic_score_percentage,
 		}),
 	},
-	{
-		key: 'removeStorage',
-		endpoint: (params: any) => `/video/${params.video_id}/storage`,
-		method: 'DELETE',
-		details: {
-			name: 'Remove Storage',
-			value: 'removeStorage',
-			description: 'Removes the video from storage',
-			action: 'Remove video from storage',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('removeStorage'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'removeStorage',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/storage`,
+	// 	method: 'DELETE',
+	// 	details: {
+	// 		name: 'Remove Storage',
+	// 		value: 'removeStorage',
+	// 		description: 'Removes the video from storage',
+	// 		action: 'Remove video from storage',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('removeStorage'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	{
 		key: 'generateStream',
 		endpoint: (params: any) => `/video/${params.video_id}/stream`,
@@ -135,146 +135,146 @@ const operations = [
 			length: params.length,
 		}),
 	},
-	{
-		key: 'generateThumbnail',
-		endpoint: (params: any) => `/video/${params.video_id}/thumbnail`,
-		method: 'POST',
-		details: {
-			name: 'Generate Thumbnail',
-			value: 'generateThumbnail',
-			description: 'Generate a thumbnail at a specific time in the video',
-			action: 'Generate a thumbnail',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('generateThumbnail'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			time: params.time,
-		}),
-	},
-	{
-		key: 'getDefaultThumbnail',
-		endpoint: (params: any) => `/video/${params.video_id}/thumbnail`,
-		method: 'GET',
-		details: {
-			name: 'Get Default Thumbnail',
-			value: 'getDefaultThumbnail',
-			description: 'Get the default thumbnail URL for a video',
-			action: 'Get default thumbnail',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getDefaultThumbnail'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
-	{
-		key: 'getThumbnails',
-		endpoint: (params: any) => `/video/${params.video_id}/thumbnails`,
-		method: 'GET',
-		details: {
-			name: 'Get Thumbnails',
-			value: 'getThumbnails',
-			description: 'Retrieves all thumbnails associated with the video',
-			action: 'Get all thumbnails',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getThumbnails'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
-	{
-		key: 'translateTranscript',
-		endpoint: (params: any) =>
-			`/collection/${params.collection_id}/video/${params.video_id}/translate`,
-		method: 'POST',
-		details: {
-			name: 'Translate Transcript',
-			value: 'translateTranscript',
-			description: "Translates the video's transcript to a specified language",
-			action: 'Translate transcript',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('translateTranscript'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			language: params.language,
-			additional_notes: params.additional_notes,
-			callback_url: params.callback_url,
-		}),
-	},
-	{
-		key: 'extractScenes',
-		endpoint: (params: any) => `/video/${params.video_id}/scenes`,
-		method: 'POST',
-		details: {
-			name: 'Extract Scenes',
-			value: 'extractScenes',
-			description: 'Extracts scenes from the video based on time intervals or shot detection',
-			action: 'Extract scenes',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('extractScenes'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			extraction_type: params.extraction_type,
-			extraction_config: params.extraction_config,
-			force: params.force,
-			callback_url: params.callback_url,
-		}),
-	},
-	{
-		key: 'listSceneCollections',
-		endpoint: (params: any) => `/video/${params.video_id}/scenes`,
-		method: 'GET',
-		details: {
-			name: 'List Scene Collections',
-			value: 'listSceneCollections',
-			description: 'Lists all scene collections for the video',
-			action: 'List scene collections',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('listSceneCollections'),
-		),
-		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
-		buildBody: () => ({}),
-	},
-	{
-		key: 'getSceneCollection',
-		endpoint: (params: any) => `/video/${params.video_id}/scenes/${params.scene_collection_id}`,
-		method: 'GET',
-		details: {
-			name: 'Get Scene Collection',
-			value: 'getSceneCollection',
-			description: 'Retrieves a specific collection of scenes from the video',
-			action: 'Get scene collection',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getSceneCollection'),
-		),
-		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
-		buildBody: () => ({}),
-	},
-	{
-		key: 'deleteSceneCollection',
-		endpoint: (params: any) => `/video/${params.video_id}/scenes/${params.scene_collection_id}`,
-		method: 'DELETE',
-		details: {
-			name: 'Delete Scene Collection',
-			value: 'deleteSceneCollection',
-			description: 'Deletes a specific scene collection from the video',
-			action: 'Delete scene collection',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('deleteSceneCollection'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'generateThumbnail',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/thumbnail`,
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Generate Thumbnail',
+	// 		value: 'generateThumbnail',
+	// 		description: 'Generate a thumbnail at a specific time in the video',
+	// 		action: 'Generate a thumbnail',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('generateThumbnail'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		time: params.time,
+	// 	}),
+	// },
+	// {
+	// 	key: 'getDefaultThumbnail',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/thumbnail`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Get Default Thumbnail',
+	// 		value: 'getDefaultThumbnail',
+	// 		description: 'Get the default thumbnail URL for a video',
+	// 		action: 'Get default thumbnail',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('getDefaultThumbnail'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
+	// {
+	// 	key: 'getThumbnails',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/thumbnails`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Get Thumbnails',
+	// 		value: 'getThumbnails',
+	// 		description: 'Retrieves all thumbnails associated with the video',
+	// 		action: 'Get all thumbnails',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('getThumbnails'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
+	// {
+	// 	key: 'translateTranscript',
+	// 	endpoint: (params: any) =>
+	// 		`/collection/${params.collection_id}/video/${params.video_id}/translate`,
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Translate Transcript',
+	// 		value: 'translateTranscript',
+	// 		description: "Translates the video's transcript to a specified language",
+	// 		action: 'Translate transcript',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('translateTranscript'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		language: params.language,
+	// 		additional_notes: params.additional_notes,
+	// 		callback_url: params.callback_url,
+	// 	}),
+	// },
+	// {
+	// 	key: 'extractScenes',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/scenes`,
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Extract Scenes',
+	// 		value: 'extractScenes',
+	// 		description: 'Extracts scenes from the video based on time intervals or shot detection',
+	// 		action: 'Extract scenes',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('extractScenes'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		extraction_type: params.extraction_type,
+	// 		extraction_config: params.extraction_config,
+	// 		force: params.force,
+	// 		callback_url: params.callback_url,
+	// 	}),
+	// },
+	// {
+	// 	key: 'listSceneCollections',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/scenes`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'List Scene Collections',
+	// 		value: 'listSceneCollections',
+	// 		description: 'Lists all scene collections for the video',
+	// 		action: 'List scene collections',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('listSceneCollections'),
+	// 	),
+	// 	buildQuery: (params: any) => ({ collection_id: params.collection_id }),
+	// 	buildBody: () => ({}),
+	// },
+	// {
+	// 	key: 'getSceneCollection',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/scenes/${params.scene_collection_id}`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Get Scene Collection',
+	// 		value: 'getSceneCollection',
+	// 		description: 'Retrieves a specific collection of scenes from the video',
+	// 		action: 'Get scene collection',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('getSceneCollection'),
+	// 	),
+	// 	buildQuery: (params: any) => ({ collection_id: params.collection_id }),
+	// 	buildBody: () => ({}),
+	// },
+	// {
+	// 	key: 'deleteSceneCollection',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/scenes/${params.scene_collection_id}`,
+	// 	method: 'DELETE',
+	// 	details: {
+	// 		name: 'Delete Scene Collection',
+	// 		value: 'deleteSceneCollection',
+	// 		description: 'Deletes a specific scene collection from the video',
+	// 		action: 'Delete scene collection',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('deleteSceneCollection'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	{
 		key: 'indexScenes',
 		endpoint: (params: any) => `/video/${params.video_id}/index/scene`,

@@ -240,24 +240,24 @@ const operations = [
 		}),
 	},
 	// generateTranscript
-	{
-		key: 'generateTranscript',
-		endpoint: (params: any) => `/video/${params.video_id}/transcription`,
-		method: 'POST',
-		details: {
-			name: 'Generate Transcript',
-			value: 'generateTranscript',
-			description: 'Generates a transcript for a video',
-			action: 'Generate Transcript',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('generateTranscript'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			force: params.force || false,
-		}),
-	},
+	// {
+	// 	key: 'generateTranscript',
+	// 	endpoint: (params: any) => `/video/${params.video_id}/transcription`,
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Generate Transcript',
+	// 		value: 'generateTranscript',
+	// 		description: 'Generates a transcript for a video',
+	// 		action: 'Generate Transcript',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('generateTranscript'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		force: params.force || false,
+	// 	}),
+	// },
 	// getAudio
 	{
 		key: 'getAudio',
@@ -418,7 +418,7 @@ const operations = [
 		endpoint: (params: any) => `/collection/${params.collection_id}/search`,
 		method: 'POST',
 		details: {
-			name: 'Search',
+			name: 'Search in a Collection',
 			value: 'search',
 			description: 'Performs a search query across the collection',
 			action: 'Search',
@@ -435,25 +435,25 @@ const operations = [
 		}),
 	},
 	// searchTitle
-	{
-		key: 'searchTitle',
-		endpoint: (params: any) => `/collection/${params.collection_id}/search/title`,
-		method: 'POST',
-		details: {
-			name: 'Search Title',
-			value: 'searchTitle',
-			description: 'Searches for a query within the titles of videos in the collection',
-			action: 'Search Title',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('searchTitle'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			query: params.query,
-			search_type: 'llm',
-		}),
-	},
+	// {
+	// 	key: 'searchTitle',
+	// 	endpoint: (params: any) => `/collection/${params.collection_id}/search/title`,
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Search Title',
+	// 		value: 'searchTitle',
+	// 		description: 'Searches for a query within the titles of videos in the collection',
+	// 		action: 'Search Title',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('searchTitle'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		query: params.query,
+	// 		search_type: 'llm',
+	// 	}),
+	// },
 	// upload
 	{
 		key: 'upload',

@@ -23,25 +23,25 @@ const operations = [
 		}),
 	},
 	// createEvent
-	{
-		key: 'createEvent',
-		endpoint: '/rtstream/event',
-		method: 'POST',
-		details: {
-			name: 'Create Event',
-			value: 'createEvent',
-			description: 'Creates a new event for RTStream',
-			action: 'Create Event',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('createEvent'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			event_prompt: params.event_prompt,
-			label: params.label,
-		}),
-	},
+	// {
+	// 	key: 'createEvent',
+	// 	endpoint: '/rtstream/event',
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Create Event',
+	// 		value: 'createEvent',
+	// 		description: 'Creates a new event for RTStream',
+	// 		action: 'Create Event',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('createEvent'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		event_prompt: params.event_prompt,
+	// 		label: params.label,
+	// 	}),
+	// },
 	// download
 	{
 		key: 'download',
@@ -93,65 +93,65 @@ const operations = [
 		buildBody: () => ({}),
 	},
 	// getTranscodeDetails
-	{
-		key: 'getTranscodeDetails',
-		endpoint: (params: any) => `/transcode/${params.job_id}`,
-		method: 'GET',
-		details: {
-			name: 'Get Transcode Details',
-			value: 'getTranscodeDetails',
-			description: 'Fetches details for a specific transcode job',
-			action: 'Get Transcode Details',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getTranscodeDetails'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'getTranscodeDetails',
+	// 	endpoint: (params: any) => `/transcode/${params.job_id}`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Get Transcode Details',
+	// 		value: 'getTranscodeDetails',
+	// 		description: 'Fetches details for a specific transcode job',
+	// 		action: 'Get Transcode Details',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('getTranscodeDetails'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	// listEvents
-	{
-		key: 'listEvents',
-		endpoint: '/rtstream/event',
-		method: 'GET',
-		details: {
-			name: 'List Events',
-			value: 'listEvents',
-			description: 'Lists all RTStream events',
-			action: 'List Events',
-		},
-		parameters: [],
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'listEvents',
+	// 	endpoint: '/rtstream/event',
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'List Events',
+	// 		value: 'listEvents',
+	// 		description: 'Lists all RTStream events',
+	// 		action: 'List Events',
+	// 	},
+	// 	parameters: [],
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	// transcode
-	{
-		key: 'transcode',
-		endpoint: '/transcode',
-		method: 'POST',
-		details: {
-			name: 'Transcode',
-			value: 'transcode',
-			description: 'Requests a transcode job for a given source video',
-			action: 'Transcode',
-		},
-		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('transcode')),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			source: params.source,
-			callback_url: params.callback_url,
-			mode: params.mode,
-			video_config: {
-				resolution: params.resolution,
-				quality: params.quality || 23,
-				framerate: params.framerate,
-				resize_mode: params.resize_mode || 'crop',
-			},
-			audio_config: {
-				mute: params.mute,
-			},
-		}),
-	},
+	// {
+	// 	key: 'transcode',
+	// 	endpoint: '/transcode',
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Transcode',
+	// 		value: 'transcode',
+	// 		description: 'Requests a transcode job for a given source video',
+	// 		action: 'Transcode',
+	// 	},
+	// 	parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('transcode')),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		source: params.source,
+	// 		callback_url: params.callback_url,
+	// 		mode: params.mode,
+	// 		video_config: {
+	// 			resolution: params.resolution,
+	// 			quality: params.quality || 23,
+	// 			framerate: params.framerate,
+	// 			resize_mode: params.resize_mode || 'crop',
+	// 		},
+	// 		audio_config: {
+	// 			mute: params.mute,
+	// 		},
+	// 	}),
+	// },
 	// updateCollection
 	{
 		key: 'updateCollection',
