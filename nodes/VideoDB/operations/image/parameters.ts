@@ -16,7 +16,7 @@ const collectionIdProperty: INodeProperties = {
 	name: 'collection_id',
 	type: 'string',
 	required: true,
-	default: '',
+	default: 'default',
 };
 
 // generate_url
