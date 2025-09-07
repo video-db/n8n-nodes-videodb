@@ -2,28 +2,28 @@ import parameters from './parameters';
 
 const operations = [
 	// connectRtstream
-	{
-		key: 'connectRtstream',
-		endpoint: '/rtstream',
-		method: 'POST',
-		details: {
-			name: 'Connect RTStream',
-			value: 'connectRtstream',
-			description: 'Connects to a new real-time stream (rtstream) and adds it to the collection',
-			action: 'Connect RTStream',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('connectRtstream'),
-		),
-		buildQuery: () => ({}),
-		buildBody: (params: any) => ({
-			collection_id: params.collection_id,
-			url: params.url,
-			name: params.name,
-			sample_rate: params.sample_rate,
-			audio: params.audio,
-		}),
-	},
+	// {
+	// 	key: 'connectRtstream',
+	// 	endpoint: '/rtstream',
+	// 	method: 'POST',
+	// 	details: {
+	// 		name: 'Connect RTStream',
+	// 		value: 'connectRtstream',
+	// 		description: 'Connects to a new real-time stream (rtstream) and adds it to the collection',
+	// 		action: 'Connect RTStream',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('connectRtstream'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: (params: any) => ({
+	// 		collection_id: params.collection_id,
+	// 		url: params.url,
+	// 		name: params.name,
+	// 		sample_rate: params.sample_rate,
+	// 		audio: params.audio,
+	// 	}),
+	// },
 	// deleteAudio
 	{
 		key: 'deleteAudio',
@@ -319,22 +319,22 @@ const operations = [
 		buildBody: () => ({}),
 	},
 	// getRtstream
-	{
-		key: 'getRtstream',
-		endpoint: (params: any) => `/rtstream/${params.rtstream_id}`,
-		method: 'GET',
-		details: {
-			name: 'Get RTStream',
-			value: 'getRtstream',
-			description: 'Retrieves a specific real-time stream by its ID',
-			action: 'Get RTStream',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('getRtstream'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'getRtstream',
+	// 	endpoint: (params: any) => `/rtstream/${params.rtstream_id}`,
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'Get RTStream',
+	// 		value: 'getRtstream',
+	// 		description: 'Retrieves a specific real-time stream by its ID',
+	// 		action: 'Get RTStream',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('getRtstream'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	// getVideo
 	{
 		key: 'getVideo',
@@ -366,52 +366,52 @@ const operations = [
 		buildBody: () => ({}),
 	},
 	// listRtstreams
-	{
-		key: 'listRtstreams',
-		endpoint: '/rtstream',
-		method: 'GET',
-		details: {
-			name: 'List RTStreams',
-			value: 'listRtstreams',
-			description: 'Lists all real-time streams associated with your account',
-			action: 'List RTStreams',
-		},
-		parameters: [],
-		buildQuery: () => ({}),
-		buildBody: () => ({}),
-	},
+	// {
+	// 	key: 'listRtstreams',
+	// 	endpoint: '/rtstream',
+	// 	method: 'GET',
+	// 	details: {
+	// 		name: 'List RTStreams',
+	// 		value: 'listRtstreams',
+	// 		description: 'Lists all real-time streams associated with your account',
+	// 		action: 'List RTStreams',
+	// 	},
+	// 	parameters: [],
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({}),
+	// },
 	// makePrivate
-	{
-		key: 'makePrivate',
-		endpoint: (params: any) => `/collection/${params.collection_id}`,
-		method: 'PATCH',
-		details: {
-			name: 'Make Private',
-			value: 'makePrivate',
-			description: 'Makes a collection private',
-			action: 'Make Private',
-		},
-		parameters: parameters.filter((p) =>
-			p.displayOptions?.show?.operation?.includes('makePrivate'),
-		),
-		buildQuery: () => ({}),
-		buildBody: () => ({ is_public: false }),
-	},
-	// makePublic
-	{
-		key: 'makePublic',
-		endpoint: (params: any) => `/collection/${params.collection_id}`,
-		method: 'PATCH',
-		details: {
-			name: 'Make Public',
-			value: 'makePublic',
-			description: 'Makes a collection publicly accessible',
-			action: 'Make Public',
-		},
-		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('makePublic')),
-		buildQuery: () => ({}),
-		buildBody: () => ({ is_public: true }),
-	},
+	// {
+	// 	key: 'makePrivate',
+	// 	endpoint: (params: any) => `/collection/${params.collection_id}`,
+	// 	method: 'PATCH',
+	// 	details: {
+	// 		name: 'Make Private',
+	// 		value: 'makePrivate',
+	// 		description: 'Makes a collection private',
+	// 		action: 'Make Private',
+	// 	},
+	// 	parameters: parameters.filter((p) =>
+	// 		p.displayOptions?.show?.operation?.includes('makePrivate'),
+	// 	),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({ is_public: false }),
+	// },
+	// // makePublic
+	// {
+	// 	key: 'makePublic',
+	// 	endpoint: (params: any) => `/collection/${params.collection_id}`,
+	// 	method: 'PATCH',
+	// 	details: {
+	// 		name: 'Make Public',
+	// 		value: 'makePublic',
+	// 		description: 'Makes a collection publicly accessible',
+	// 		action: 'Make Public',
+	// 	},
+	// 	parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('makePublic')),
+	// 	buildQuery: () => ({}),
+	// 	buildBody: () => ({ is_public: true }),
+	// },
 	// search
 	{
 		key: 'search',
