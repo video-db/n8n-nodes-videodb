@@ -4,11 +4,16 @@ const parameters: INodeProperties[] = [];
 
 // Shared properties
 const collectionIdProperty: INodeProperties = {
-	displayName: 'Collection ID',
+	displayName: 'Collection Name or ID',
 	name: 'collection_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
-	default: 'default',
+	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getCollections',
+	},
 };
 const jobIdProperty: INodeProperties = {
 	displayName: 'Job ID',
@@ -225,14 +230,6 @@ parameters.push(
 		name: 'result_threshold',
 		type: 'number',
 		default: 5,
-		displayOptions: { show: { operation: ['youtubeSearch'] } },
-	},
-	{
-		displayName: 'Platform',
-		name: 'platform',
-		type: 'options',
-		options: [{ name: 'YouTube', value: 'youtube' }],
-		default: 'youtube',
 		displayOptions: { show: { operation: ['youtubeSearch'] } },
 	},
 	{

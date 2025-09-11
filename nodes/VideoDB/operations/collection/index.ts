@@ -1,30 +1,6 @@
 import parameters from './parameters';
 
 const operations = [
-	// connectRtstream
-	// {
-	// 	key: 'connectRtstream',
-	// 	endpoint: '/rtstream',
-	// 	method: 'POST',
-	// 	details: {
-	// 		name: 'Connect RTStream',
-	// 		value: 'connectRtstream',
-	// 		description: 'Connects to a new real-time stream (rtstream) and adds it to the collection',
-	// 		action: 'Connect RTStream',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('connectRtstream'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: (params: any) => ({
-	// 		collection_id: params.collection_id,
-	// 		url: params.url,
-	// 		name: params.name,
-	// 		sample_rate: params.sample_rate,
-	// 		audio: params.audio,
-	// 	}),
-	// },
-	// deleteAudio
 	{
 		key: 'deleteAudio',
 		endpoint: (params: any) => `/audio/${params.audio_id}`,
@@ -41,7 +17,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// deleteImage
 	{
 		key: 'deleteImage',
 		endpoint: (params: any) => `/image/${params.image_id}`,
@@ -58,7 +33,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// deleteVideo
 	{
 		key: 'deleteVideo',
 		endpoint: (params: any) => `/video/${params.video_id}`,
@@ -75,7 +49,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// deleteCollection
 	{
 		key: 'deleteCollection',
 		endpoint: (params: any) => `/collection/${params.collection_id}`,
@@ -92,7 +65,6 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: () => ({}),
 	},
-	// dubVideo
 	{
 		key: 'dubVideo',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/video/dub`,
@@ -111,7 +83,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateImage
 	{
 		key: 'generateImage',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/image`,
@@ -132,7 +103,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateMusic
 	{
 		key: 'generateMusic',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/audio`,
@@ -154,7 +124,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateSoundEffect
 	{
 		key: 'generateSoundEffect',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/audio`,
@@ -176,7 +145,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateVoice
 	{
 		key: 'generateVoice',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/audio`,
@@ -197,7 +165,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateVideo
 	{
 		key: 'generateVideo',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/video`,
@@ -218,7 +185,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// generateText
 	{
 		key: 'generateText',
 		endpoint: (params: any) => `/collection/${params.collection_id}/generate/text`,
@@ -239,26 +205,6 @@ const operations = [
 			response_type: params.response_type,
 		}),
 	},
-	// generateTranscript
-	// {
-	// 	key: 'generateTranscript',
-	// 	endpoint: (params: any) => `/video/${params.video_id}/transcription`,
-	// 	method: 'POST',
-	// 	details: {
-	// 		name: 'Generate Transcript',
-	// 		value: 'generateTranscript',
-	// 		description: 'Generates a transcript for a video',
-	// 		action: 'Generate Transcript',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('generateTranscript'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: (params: any) => ({
-	// 		force: params.force || false,
-	// 	}),
-	// },
-	// getAudio
 	{
 		key: 'getAudio',
 		endpoint: (params: any) => `/audio/${params.audio_id}`,
@@ -273,7 +219,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// getAudios
 	{
 		key: 'getAudios',
 		endpoint: '/audio',
@@ -288,7 +233,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// getImage
 	{
 		key: 'getImage',
 		endpoint: (params: any) => `/image/${params.image_id}`,
@@ -303,7 +247,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// getImages
 	{
 		key: 'getImages',
 		endpoint: '/image',
@@ -318,24 +261,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// getRtstream
-	// {
-	// 	key: 'getRtstream',
-	// 	endpoint: (params: any) => `/rtstream/${params.rtstream_id}`,
-	// 	method: 'GET',
-	// 	details: {
-	// 		name: 'Get RTStream',
-	// 		value: 'getRtstream',
-	// 		description: 'Retrieves a specific real-time stream by its ID',
-	// 		action: 'Get RTStream',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('getRtstream'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({}),
-	// },
-	// getVideo
 	{
 		key: 'getVideo',
 		endpoint: (params: any) => `/video/${params.video_id}`,
@@ -365,54 +290,6 @@ const operations = [
 		buildQuery: (params: any) => ({ collection_id: params.collection_id }),
 		buildBody: () => ({}),
 	},
-	// listRtstreams
-	// {
-	// 	key: 'listRtstreams',
-	// 	endpoint: '/rtstream',
-	// 	method: 'GET',
-	// 	details: {
-	// 		name: 'List RTStreams',
-	// 		value: 'listRtstreams',
-	// 		description: 'Lists all real-time streams associated with your account',
-	// 		action: 'List RTStreams',
-	// 	},
-	// 	parameters: [],
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({}),
-	// },
-	// makePrivate
-	// {
-	// 	key: 'makePrivate',
-	// 	endpoint: (params: any) => `/collection/${params.collection_id}`,
-	// 	method: 'PATCH',
-	// 	details: {
-	// 		name: 'Make Private',
-	// 		value: 'makePrivate',
-	// 		description: 'Makes a collection private',
-	// 		action: 'Make Private',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('makePrivate'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({ is_public: false }),
-	// },
-	// // makePublic
-	// {
-	// 	key: 'makePublic',
-	// 	endpoint: (params: any) => `/collection/${params.collection_id}`,
-	// 	method: 'PATCH',
-	// 	details: {
-	// 		name: 'Make Public',
-	// 		value: 'makePublic',
-	// 		description: 'Makes a collection publicly accessible',
-	// 		action: 'Make Public',
-	// 	},
-	// 	parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('makePublic')),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({ is_public: true }),
-	// },
-	// search
 	{
 		key: 'search',
 		endpoint: (params: any) => `/collection/${params.collection_id}/search`,
@@ -421,7 +298,7 @@ const operations = [
 			name: 'Search in a Collection',
 			value: 'search',
 			description: 'Performs a search query across the collection',
-			action: 'Search',
+			action: 'Search in a Collection',
 		},
 		parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('search')),
 		buildQuery: () => ({}),
@@ -434,27 +311,7 @@ const operations = [
 			dynamic_score_percentage: params.dynamic_score_percentage,
 		}),
 	},
-	// searchTitle
-	// {
-	// 	key: 'searchTitle',
-	// 	endpoint: (params: any) => `/collection/${params.collection_id}/search/title`,
-	// 	method: 'POST',
-	// 	details: {
-	// 		name: 'Search Title',
-	// 		value: 'searchTitle',
-	// 		description: 'Searches for a query within the titles of videos in the collection',
-	// 		action: 'Search Title',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('searchTitle'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: (params: any) => ({
-	// 		query: params.query,
-	// 		search_type: 'llm',
-	// 	}),
-	// },
-	// upload
+
 	{
 		key: 'upload',
 		endpoint: (params: any) => `/collection/${params.collection_id}/upload`,
@@ -475,7 +332,6 @@ const operations = [
 			callback_url: params.callback_url,
 		}),
 	},
-	// recordMeeting
 	{
 		key: 'recordMeeting',
 		endpoint: (params: any) => `/collection/${params.collection_id}/meeting/record`,
@@ -501,7 +357,6 @@ const operations = [
 			realtime_stream: params.realtime_stream,
 		}),
 	},
-	// getMeeting
 	{
 		key: 'getMeeting',
 		endpoint: (params: any) => `/collection/${params.collection_id}/meeting/${params.meeting_id}`,
