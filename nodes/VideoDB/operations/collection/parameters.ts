@@ -4,32 +4,55 @@ const parameters: INodeProperties[] = [];
 
 // Shared properties
 const collectionIdProperty: INodeProperties = {
-	displayName: 'Collection ID',
+	displayName: 'Collection Name or ID',
 	name: 'collection_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
-	default: 'default',
+	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getCollections',
+	},
 };
 const videoIdProperty: INodeProperties = {
-	displayName: 'Video ID',
+	displayName: 'Video Name or ID',
 	name: 'video_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
 	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getVideosInCollection',
+		loadOptionsDependsOn: ['collection_id'],
+	},
 };
 const audioIdProperty: INodeProperties = {
-	displayName: 'Audio ID',
+	displayName: 'Audio Name or ID',
 	name: 'audio_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
 	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getAudiosInCollection',
+		loadOptionsDependsOn: ['collection_id'],
+	},
 };
 const imageIdProperty: INodeProperties = {
-	displayName: 'Image ID',
+	displayName: 'Image Name or ID',
 	name: 'image_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
 	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getImagesInCollection',
+		loadOptionsDependsOn: ['collection_id'],
+	},
 };
 
 // connectRtstream
@@ -156,8 +179,30 @@ parameters.push(
 	{
 		displayName: 'Aspect Ratio',
 		name: 'aspect_ratio',
-		type: 'string',
-		default: '',
+		type: 'options',
+		options: [
+			{
+				name: '1:1',
+				value: '1:1',
+			},
+			{
+				name: '16:9',
+				value: '16:9',
+			},
+			{
+				name: '3:4',
+				value: '3:4',
+			},
+			{
+				name: '4:3',
+				value: '4:3',
+			},
+			{
+				name: '9:16',
+				value: '9:16',
+			},
+		],
+		default: '1:1',
 		displayOptions: { show: { operation: ['generateImage'] } },
 	},
 	{
@@ -246,8 +291,111 @@ parameters.push(
 	{
 		displayName: 'Voice Name',
 		name: 'voice_name',
-		type: 'string',
-		default: '',
+		type: 'options',
+		default: 'Aria',
+		description: 'Choose from the list of available voices',
+		options: [
+			{
+				name: 'Alice',
+				value: 'Alice',
+				description: 'Confident, British, middle-aged female',
+			},
+			{
+				name: 'Aria',
+				value: 'Aria',
+				description: 'Expressive, American, female',
+			},
+			{
+				name: 'Bill',
+				value: 'Bill',
+				description: 'Trustworthy, American, old male',
+			},
+			{
+				name: 'Brian',
+				value: 'Brian',
+				description: 'Deep, American, middle-aged male',
+			},
+			{
+				name: 'Callum',
+				value: 'Callum',
+				description: 'Intense, Transatlantic, male',
+			},
+			{
+				name: 'Charlie',
+				value: 'Charlie',
+				description: 'Natural, Australian, male',
+			},
+			{
+				name: 'Charlotte',
+				value: 'Charlotte',
+				description: 'Seductive, Swedish, young female',
+			},
+			{
+				name: 'Chris',
+				value: 'Chris',
+				description: 'Casual, American, middle-aged male',
+			},
+			{
+				name: 'Daniel',
+				value: 'Daniel',
+				description: 'Authoritative, British, middle-aged male',
+			},
+			{
+				name: 'Eric',
+				value: 'Eric',
+				description: 'Friendly, American, middle-aged male',
+			},
+			{
+				name: 'George',
+				value: 'George',
+				description: 'Warm, British, middle-aged male',
+			},
+			{
+				name: 'Jessica',
+				value: 'Jessica',
+				description: 'Expressive, American, young female',
+			},
+			{
+				name: 'Laura',
+				value: 'Laura',
+				description: 'Upbeat, American, young female',
+			},
+			{
+				name: 'Liam',
+				value: 'Liam',
+				description: 'Articulate, American, young male',
+			},
+			{
+				name: 'Lily',
+				value: 'Lily',
+				description: 'Warm, British, middle-aged female',
+			},
+			{
+				name: 'Matilda',
+				value: 'Matilda',
+				description: 'Friendly, American, middle-aged female',
+			},
+			{
+				name: 'River',
+				value: 'River',
+				description: 'Confident, American, non-binary',
+			},
+			{
+				name: 'Roger',
+				value: 'Roger',
+				description: 'Confident, American, male',
+			},
+			{
+				name: 'Sarah',
+				value: 'Sarah',
+				description: 'Soft, American, young female',
+			},
+			{
+				name: 'Will',
+				value: 'Will',
+				description: 'Friendly, American, young male',
+			},
+		],
 		displayOptions: { show: { operation: ['generateVoice'] } },
 	},
 	{
@@ -591,7 +739,7 @@ parameters.push(
 		displayName: 'Callback Data',
 		name: 'callback_data',
 		type: 'json',
-		default: '',
+		default: '{}',
 		displayOptions: { show: { operation: ['recordMeeting'] } },
 	},
 	{

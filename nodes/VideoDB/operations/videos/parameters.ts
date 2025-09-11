@@ -5,19 +5,30 @@ const parameters: INodeProperties[] = [];
 // #region Shared Parameters
 
 const collectionIdProperty: INodeProperties = {
-	displayName: 'Collection ID',
+	displayName: 'Collection Name or ID',
 	name: 'collection_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
-	default: 'default',
+	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getCollections',
+	},
 };
 
 const videoIdProperty: INodeProperties = {
-	displayName: 'Video ID',
+	displayName: 'Video Name or ID',
 	name: 'video_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
 	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getVideosInCollection',
+		loadOptionsDependsOn: ['collection_id'],
+	},
 };
 
 const callbackUrlProperty: INodeProperties = {
@@ -47,6 +58,10 @@ parameters.push({
 // Index a video (spoken words)
 parameters.push(
 	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['indexSpokenWords'] } },
+	},
+	{
 		...videoIdProperty,
 		description: 'The ID of the video to index',
 		displayOptions: { show: { operation: ['indexSpokenWords'] } },
@@ -74,40 +89,12 @@ parameters.push(
 // Get transcript
 parameters.push(
 	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['getTranscript'] } },
+	},
+	{
 		...videoIdProperty,
 		description: 'The ID of the video',
-		displayOptions: { show: { operation: ['getTranscript'] } },
-	},
-	{
-		displayName: 'Start',
-		name: 'start',
-		type: 'number',
-		default: 0,
-		description: 'Start time (seconds)',
-		displayOptions: { show: { operation: ['getTranscript'] } },
-	},
-	{
-		displayName: 'End',
-		name: 'end',
-		type: 'number',
-		default: 0,
-		description: 'End time (seconds)',
-		displayOptions: { show: { operation: ['getTranscript'] } },
-	},
-	{
-		displayName: 'Segmenter',
-		name: 'segmenter',
-		type: 'string',
-		default: 'word',
-		description: 'Segmenter type (word, sentence, time)',
-		displayOptions: { show: { operation: ['getTranscript'] } },
-	},
-	{
-		displayName: 'Length',
-		name: 'length',
-		type: 'number',
-		default: 1,
-		description: 'Length of transcript segments when using time segmenter',
 		displayOptions: { show: { operation: ['getTranscript'] } },
 	},
 	{
@@ -120,9 +107,13 @@ parameters.push(
 // Search
 parameters.push(
 	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['searchInVideo'] } },
+	},
+	{
 		...videoIdProperty,
 		description: 'The ID of the video to search within',
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Search Type',
@@ -136,7 +127,7 @@ parameters.push(
 		required: true,
 		default: 'semantic',
 		description: 'Type of search (semantic, keyword, scene, etc)',
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Index Type',
@@ -148,7 +139,7 @@ parameters.push(
 		],
 		default: 'spoken_word',
 		description: 'Type of index (spoken_word, scene, etc)',
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Query',
@@ -157,32 +148,30 @@ parameters.push(
 		required: true,
 		default: '',
 		description: 'Search query',
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Score Threshold',
 		name: 'score_threshold',
 		type: 'number',
 		default: 0.0,
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Result Threshold',
 		name: 'result_threshold',
 		type: 'number',
 		default: 10,
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 	{
 		displayName: 'Dynamic Score Percentage',
 		name: 'dynamic_score_percentage',
 		type: 'number',
 		default: 0.0,
-		displayOptions: { show: { operation: ['search'] } },
+		displayOptions: { show: { operation: ['searchInVideo'] } },
 	},
 );
-
-// #region New Operations
 
 const videoOperations = [
 	'deleteVideo',
@@ -195,32 +184,35 @@ const videoOperations = [
 	'deleteSceneCollection',
 	'getSceneCollection',
 	'indexScenes',
-	'listSceneIndexes',
-	'getSceneIndex',
-	'deleteSceneIndex',
 	'addSubtitle',
 	'translateTranscript',
 ];
 
 for (const operation of videoOperations) {
-	parameters.push({
-		...videoIdProperty,
-		description: 'The ID of the video',
-		displayOptions: { show: { operation: [operation] } },
-	});
+	parameters.push(
+		{
+			...collectionIdProperty,
+			displayOptions: { show: { operation: [operation] } },
+		},
+		{
+			...videoIdProperty,
+			description: 'The ID of the video',
+			displayOptions: { show: { operation: [operation] } },
+		},
+	);
 }
 
-parameters.push({
-	...videoIdProperty,
-	description: 'The ID of the video',
-	displayOptions: { show: { operation: ['removeStorage'] } },
-});
-
-parameters.push({
-	...collectionIdProperty,
-	description: 'The ID of the collection',
-	displayOptions: { show: { operation: ['removeStorage'] } },
-});
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['removeStorage'] } },
+	},
+	{
+		...videoIdProperty,
+		description: 'The ID of the video',
+		displayOptions: { show: { operation: ['removeStorage'] } },
+	},
+);
 
 // Generate Stream
 parameters.push(
@@ -374,7 +366,7 @@ parameters.push(
 		displayName: 'Extraction Config (JSON)',
 		name: 'extraction_config',
 		type: 'json',
-		default: '',
+		default: '{}',
 		description: 'Configuration for the scene extraction',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
@@ -390,7 +382,7 @@ parameters.push(
 		displayName: 'Metadata (JSON)',
 		name: 'metadata',
 		type: 'json',
-		default: '',
+		default: '{}',
 		description: 'Metadata to associate with the index',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
@@ -406,7 +398,7 @@ parameters.push(
 		displayName: 'Model Config (JSON)',
 		name: 'model_config',
 		type: 'json',
-		default: '',
+		default: '{}',
 		description: 'Configuration for the model',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
@@ -414,7 +406,7 @@ parameters.push(
 		displayName: 'Scenes (JSON)',
 		name: 'scenes',
 		type: 'json',
-		default: '',
+		default: '{}',
 		description: 'A list of scenes to be indexed',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
@@ -424,14 +416,27 @@ parameters.push(
 	},
 );
 
-// Scene Indexes
+// listSceneIndexes
 parameters.push(
 	{
 		...collectionIdProperty,
-		description: 'The ID of the parent collection',
-		displayOptions: {
-			show: { operation: ['listSceneIndexes', 'getSceneIndex'] },
-		},
+		displayOptions: { show: { operation: ['listSceneIndexes'] } },
+	},
+	{
+		...videoIdProperty,
+		displayOptions: { show: { operation: ['listSceneIndexes'] } },
+	},
+);
+
+// getSceneIndex
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['getSceneIndex'] } },
+	},
+	{
+		...videoIdProperty,
+		displayOptions: { show: { operation: ['getSceneIndex'] } },
 	},
 	{
 		displayName: 'Scene Index ID',
@@ -439,9 +444,27 @@ parameters.push(
 		type: 'string',
 		required: true,
 		default: '',
-		displayOptions: {
-			show: { operation: ['getSceneIndex', 'deleteSceneIndex'] },
-		},
+		displayOptions: { show: { operation: ['getSceneIndex'] } },
+	},
+);
+
+// deleteSceneIndex
+parameters.push(
+	{
+		...collectionIdProperty,
+		displayOptions: { show: { operation: ['deleteSceneIndex'] } },
+	},
+	{
+		...videoIdProperty,
+		displayOptions: { show: { operation: ['deleteSceneIndex'] } },
+	},
+	{
+		displayName: 'Scene Index ID',
+		name: 'scene_index_id',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: { show: { operation: ['deleteSceneIndex'] } },
 	},
 );
 

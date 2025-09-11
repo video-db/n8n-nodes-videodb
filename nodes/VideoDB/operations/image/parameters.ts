@@ -4,19 +4,30 @@ const parameters: INodeProperties[] = [];
 
 // Shared properties
 const imageIdProperty: INodeProperties = {
-	displayName: 'Image ID',
+	displayName: 'Image Name or ID',
 	name: 'image_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
 	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getImagesInCollection',
+		loadOptionsDependsOn: ['collection_id'],
+	},
 };
 
 const collectionIdProperty: INodeProperties = {
-	displayName: 'Collection ID',
+	displayName: 'Collection Name or ID',
 	name: 'collection_id',
-	type: 'string',
+	type: 'options',
+	description:
+		'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	required: true,
-	default: 'default',
+	default: '',
+	typeOptions: {
+		loadOptionsMethod: 'getCollections',
+	},
 };
 
 // generate_url

@@ -1,7 +1,6 @@
 import parameters from './parameters';
 
 const operations = [
-	// createCollection
 	{
 		key: 'createCollection',
 		endpoint: '/collection',
@@ -22,27 +21,6 @@ const operations = [
 			is_public: params.is_public,
 		}),
 	},
-	// createEvent
-	// {
-	// 	key: 'createEvent',
-	// 	endpoint: '/rtstream/event',
-	// 	method: 'POST',
-	// 	details: {
-	// 		name: 'Create Event',
-	// 		value: 'createEvent',
-	// 		description: 'Creates a new event for RTStream',
-	// 		action: 'Create Event',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('createEvent'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: (params: any) => ({
-	// 		event_prompt: params.event_prompt,
-	// 		label: params.label,
-	// 	}),
-	// },
-	// download
 	{
 		key: 'download',
 		endpoint: '/download',
@@ -60,7 +38,6 @@ const operations = [
 			name: params.name,
 		}),
 	},
-	// getCollection
 	{
 		key: 'getCollection',
 		endpoint: (params: any) => `/collection/${params.collection_id}`,
@@ -77,7 +54,6 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: () => ({}),
 	},
-	// getCollections
 	{
 		key: 'getCollections',
 		endpoint: '/collection',
@@ -92,67 +68,6 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: () => ({}),
 	},
-	// getTranscodeDetails
-	// {
-	// 	key: 'getTranscodeDetails',
-	// 	endpoint: (params: any) => `/transcode/${params.job_id}`,
-	// 	method: 'GET',
-	// 	details: {
-	// 		name: 'Get Transcode Details',
-	// 		value: 'getTranscodeDetails',
-	// 		description: 'Fetches details for a specific transcode job',
-	// 		action: 'Get Transcode Details',
-	// 	},
-	// 	parameters: parameters.filter((p) =>
-	// 		p.displayOptions?.show?.operation?.includes('getTranscodeDetails'),
-	// 	),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({}),
-	// },
-	// listEvents
-	// {
-	// 	key: 'listEvents',
-	// 	endpoint: '/rtstream/event',
-	// 	method: 'GET',
-	// 	details: {
-	// 		name: 'List Events',
-	// 		value: 'listEvents',
-	// 		description: 'Lists all RTStream events',
-	// 		action: 'List Events',
-	// 	},
-	// 	parameters: [],
-	// 	buildQuery: () => ({}),
-	// 	buildBody: () => ({}),
-	// },
-	// transcode
-	// {
-	// 	key: 'transcode',
-	// 	endpoint: '/transcode',
-	// 	method: 'POST',
-	// 	details: {
-	// 		name: 'Transcode',
-	// 		value: 'transcode',
-	// 		description: 'Requests a transcode job for a given source video',
-	// 		action: 'Transcode',
-	// 	},
-	// 	parameters: parameters.filter((p) => p.displayOptions?.show?.operation?.includes('transcode')),
-	// 	buildQuery: () => ({}),
-	// 	buildBody: (params: any) => ({
-	// 		source: params.source,
-	// 		callback_url: params.callback_url,
-	// 		mode: params.mode,
-	// 		video_config: {
-	// 			resolution: params.resolution,
-	// 			quality: params.quality || 23,
-	// 			framerate: params.framerate,
-	// 			resize_mode: params.resize_mode || 'crop',
-	// 		},
-	// 		audio_config: {
-	// 			mute: params.mute,
-	// 		},
-	// 	}),
-	// },
-	// updateCollection
 	{
 		key: 'updateCollection',
 		endpoint: (params: any) => `/collection/${params.collection_id}`,
@@ -172,7 +87,6 @@ const operations = [
 			description: params.description,
 		}),
 	},
-	// youtubeSearch
 	{
 		key: 'youtubeSearch',
 		endpoint: (params: any) => `/collection/${params.collection_id}/search/web`,
@@ -191,7 +105,7 @@ const operations = [
 			collection_id: params.collection_id,
 			query: params.query,
 			result_threshold: params.result_threshold,
-			platform: params.platform,
+			platform: 'youtube',
 			duration: params.duration,
 		}),
 	},
