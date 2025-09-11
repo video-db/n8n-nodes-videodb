@@ -67,11 +67,93 @@ parameters.push(
 		displayOptions: { show: { operation: ['indexSpokenWords'] } },
 	},
 	{
-		displayName: 'Language Code',
+		displayName: 'Language',
 		name: 'language_code',
-		type: 'string',
+		type: 'options',
 		default: 'en',
 		description: 'Language code for indexing',
+		options: [
+			{
+				name: 'American English',
+				value: 'en_us',
+			},
+			{
+				name: 'Australian English',
+				value: 'en_au',
+			},
+			{
+				name: 'British English',
+				value: 'en_uk',
+			},
+			{
+				name: 'Chinese',
+				value: 'zh',
+			},
+			{
+				name: 'Dutch',
+				value: 'nl',
+			},
+			{
+				name: 'Finnish',
+				value: 'fi',
+			},
+			{
+				name: 'French',
+				value: 'fr',
+			},
+			{
+				name: 'German',
+				value: 'de',
+			},
+			{
+				name: 'Global English',
+				value: 'en',
+			},
+			{
+				name: 'Hindi',
+				value: 'hi',
+			},
+			{
+				name: 'Italian',
+				value: 'it',
+			},
+			{
+				name: 'Japanese',
+				value: 'ja',
+			},
+			{
+				name: 'Korean',
+				value: 'ko',
+			},
+			{
+				name: 'Polish',
+				value: 'pl',
+			},
+			{
+				name: 'Portuguese',
+				value: 'pt',
+			},
+			{
+				name: 'Russian',
+				value: 'ru',
+			},
+			{
+				name: 'Spanish',
+				value: 'es',
+			},
+			{
+				name: 'Turkish',
+				value: 'tr',
+			},
+			{
+				name: 'Ukrainian',
+				value: 'uk',
+			},
+			{
+				name: 'Vietnamese',
+				value: 'vi',
+			},
+		],
 		displayOptions: { show: { operation: ['indexSpokenWords'] } },
 	},
 	{

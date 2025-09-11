@@ -146,12 +146,130 @@ parameters.push(
 		displayOptions: { show: { operation: ['dubVideo'] } },
 	},
 	{
-		displayName: 'Language Code',
+		displayName: 'Language',
 		name: 'language_code',
-		type: 'string',
+		type: 'options',
 		required: true,
-		default: '',
+		default: 'en',
 		displayOptions: { show: { operation: ['dubVideo'] } },
+		options: [
+			{
+				name: 'Bulgarian',
+				value: 'bg',
+			},
+			{
+				name: 'Chinese',
+				value: 'zh',
+			},
+			{
+				name: 'Classic Arabic',
+				value: 'ar',
+			},
+			{
+				name: 'Croatian',
+				value: 'hr',
+			},
+			{
+				name: 'Czech',
+				value: 'cs',
+			},
+			{
+				name: 'Danish',
+				value: 'da',
+			},
+			{
+				name: 'Dutch',
+				value: 'nl',
+			},
+			{
+				name: 'English',
+				value: 'en',
+			},
+			{
+				name: 'Filipino',
+				value: 'fil',
+			},
+			{
+				name: 'Finnish',
+				value: 'fi',
+			},
+			{
+				name: 'French',
+				value: 'fr',
+			},
+			{
+				name: 'German',
+				value: 'de',
+			},
+			{
+				name: 'Greek',
+				value: 'el',
+			},
+			{
+				name: 'Hindi',
+				value: 'hi',
+			},
+			{
+				name: 'Indonesian',
+				value: 'id',
+			},
+			{
+				name: 'Italian',
+				value: 'it',
+			},
+			{
+				name: 'Japanese',
+				value: 'ja',
+			},
+			{
+				name: 'Korean',
+				value: 'ko',
+			},
+			{
+				name: 'Malay',
+				value: 'ms',
+			},
+			{
+				name: 'Polish',
+				value: 'pl',
+			},
+			{
+				name: 'Portuguese',
+				value: 'pt',
+			},
+			{
+				name: 'Romanian',
+				value: 'ro',
+			},
+			{
+				name: 'Russian',
+				value: 'ru',
+			},
+			{
+				name: 'Slovak',
+				value: 'sk',
+			},
+			{
+				name: 'Spanish',
+				value: 'es',
+			},
+			{
+				name: 'Swedish',
+				value: 'sv',
+			},
+			{
+				name: 'Tamil',
+				value: 'ta',
+			},
+			{
+				name: 'Turkish',
+				value: 'tr',
+			},
+			{
+				name: 'Ukrainian',
+				value: 'uk',
+			},
+		],
 	},
 	{
 		displayName: 'Callback URL',
