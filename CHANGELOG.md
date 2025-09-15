@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3.beta.2] - 2025-09-15
+
+- fixed the order of inputs in `audio` and `image` Generate URL methods
+- JSON parsing for `json` input
+
+## [1.0.3.beta.1] - 2025-09-11
+
+- Dynamic dropdown for language codes
+
 ## [1.0.3-beta.0] - 2025-09-11
 
 - Dynamic dropdowns for Video ID, Image ID, Audio ID and Collection ID wherever needed
