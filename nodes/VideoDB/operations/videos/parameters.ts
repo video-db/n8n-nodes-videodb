@@ -315,11 +315,6 @@ parameters.push(
 		description: 'The length of the video stream to generate',
 		displayOptions: { show: { operation: ['generateStream'] } },
 	},
-	{
-		...collectionIdProperty,
-		description: 'The ID of the collection',
-		displayOptions: { show: { operation: ['generateStream'] } },
-	},
 );
 
 // Generate Thumbnail
@@ -386,7 +381,7 @@ parameters.push(
 		displayName: 'Extraction Config',
 		name: 'extraction_config',
 		type: 'json',
-		default: '',
+		default: '{}',
 		description: 'JSON object with configuration for the extraction process',
 		displayOptions: { show: { operation: ['extractScenes'] } },
 	},
@@ -458,14 +453,6 @@ parameters.push(
 		type: 'string',
 		default: '',
 		description: 'A prompt to guide the indexing',
-		displayOptions: { show: { operation: ['indexScenes'] } },
-	},
-	{
-		displayName: 'Metadata (JSON)',
-		name: 'metadata',
-		type: 'json',
-		default: '{}',
-		description: 'Metadata to associate with the index',
 		displayOptions: { show: { operation: ['indexScenes'] } },
 	},
 	{
@@ -555,7 +542,7 @@ parameters.push({
 	displayName: 'Subtitle Style (JSON)',
 	name: 'subtitle_style',
 	type: 'json',
-	default: '',
+	default: '{}',
 	description: 'A JSON object containing styling options for the subtitles',
 	displayOptions: { show: { operation: ['addSubtitle'] } },
 });

@@ -352,7 +352,10 @@ const operations = [
 			bot_image_url: params.bot_image_url,
 			meeting_title: params.meeting_title,
 			callback_url: params.callback_url,
-			callback_data: params.callback_data,
+			callback_data:
+				typeof params.callback_data === 'string'
+					? JSON.parse(params.callback_data)
+					: params.callback_data,
 			time_zone: params.time_zone || 'UTC',
 			realtime_stream: params.realtime_stream,
 		}),

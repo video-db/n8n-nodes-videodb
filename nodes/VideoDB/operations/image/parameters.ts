@@ -33,11 +33,11 @@ const collectionIdProperty: INodeProperties = {
 // generate_url
 parameters.push(
 	{
-		...imageIdProperty,
+		...collectionIdProperty,
 		displayOptions: { show: { operation: ['generateImageUrl'] } },
 	},
 	{
-		...collectionIdProperty,
+		...imageIdProperty,
 		displayOptions: { show: { operation: ['generateImageUrl'] } },
 	},
 );

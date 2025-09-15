@@ -33,11 +33,11 @@ const collectionIdProperty: INodeProperties = {
 // generate_url
 parameters.push(
 	{
-		...audioIdProperty,
+		...collectionIdProperty,
 		displayOptions: { show: { operation: ['generateAudioUrl'] } },
 	},
 	{
-		...collectionIdProperty,
+		...audioIdProperty,
 		displayOptions: { show: { operation: ['generateAudioUrl'] } },
 	},
 );

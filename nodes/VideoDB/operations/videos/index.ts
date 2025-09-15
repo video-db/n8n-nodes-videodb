@@ -85,7 +85,7 @@ const operations = [
 		),
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
-			timeline: params.timeline,
+			timeline: typeof params.timeline === 'string' ? JSON.parse(params.timeline) : params.timeline,
 			length: params.length,
 		}),
 	},
@@ -106,12 +106,17 @@ const operations = [
 		buildBody: (params: any) => ({
 			name: params.name,
 			extraction_type: params.extraction_type,
-			extraction_config: params.extraction_config,
+			extraction_config:
+				typeof params.extraction_config === 'string'
+					? JSON.parse(params.extraction_config)
+					: params.extraction_config,
 			prompt: params.prompt,
-			metadata: params.metadata,
 			model_name: params.model_name,
-			model_config: params.model_config,
-			scenes: params.scenes,
+			model_config:
+				typeof params.model_config === 'string'
+					? JSON.parse(params.model_config)
+					: params.model_config,
+			scenes: typeof params.scenes === 'string' ? JSON.parse(params.scenes) : params.scenes,
 			callback_url: params.callback_url,
 		}),
 	},
@@ -179,7 +184,10 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
 			type: 'add_subtitles',
-			subtitle_style: params.subtitle_style,
+			subtitle_style:
+				typeof params.subtitle_style === 'string'
+					? JSON.parse(params.subtitle_style)
+					: params.subtitle_style,
 		}),
 	},
 ];
