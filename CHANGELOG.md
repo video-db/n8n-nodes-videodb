@@ -1,19 +1,20 @@
 # Changelog
 
-## [1.0.3.beta.2] - 2025-09-15
+## [1.0.3] - 2025-09-16
 
-- fixed the order of inputs in `audio` and `image` Generate URL methods
-- JSON parsing for `json` input
+### Added
 
-## [1.0.3.beta.1] - 2025-09-11
+- Dynamic dropdowns for Video ID, Image ID, Audio ID, Collection ID, and Language codes.
 
-- Dynamic dropdown for language codes
+### Fixed
 
-## [1.0.3-beta.0] - 2025-09-11
+- Fixed the order of inputs in `audio` and `image` Generate URL methods.
+- Addressed bugs related to duplicate IDs in List, Get, and Delete Scene Indexes.
+- Improved JSON parsing for `json` input.
 
-- Dynamic dropdowns for Video ID, Image ID, Audio ID and Collection ID wherever needed
-- Addressed bugs related to duplicate ids in List, Get and Delete Scene Indexes
-- Code cleanup of commented out code
+### Changed
+
+- General code cleanup of commented-out code.
 
 ## [1.0.2]() - 2025-09-7
 
