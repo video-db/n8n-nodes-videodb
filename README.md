@@ -2,9 +2,9 @@
 
 # n8n-nodes-videodb
 
-This is an n8n community node. It lets you use the [VideoDB API](https://api.videodb.io) in your n8n workflows.
+This is an n8n community node. It lets you use the [VideoDB](https://videodb.com) in your n8n workflows.
 
-Power your video and media automation with VideoDB. Access advanced video indexing, search, and management features. Get started at https://api.videodb.io.
+Power your video and media automation with VideoDB. Access advanced video indexing, search, and management features. Get started at https://console.videodb.io
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
@@ -35,7 +35,7 @@ This node presently supports video operations for:
 
 ## Credentials
 
-An API key is required in order to issue calls to the VideoDB API. Sign up to retrieve your API key at https://api.videodb.io.
+An API key is required in order to issue calls to the VideoDB API. Sign up to retrieve your API key at https://console.videodb.io.
 
 ## Compatibility
 
@@ -48,7 +48,7 @@ You should familiarize yourself with the various response objects, to understand
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-- [VideoDB API documentation](https://api.videodb.io)
+- [VideoDB API documentation](https://docs.videodb.io)
 
 ## Development
 
@@ -67,4 +67,7 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
+- 1.0.3 - Dropdowns for `collection`, `image`, `audio` and `video` IDs along with minor bug fixes
+- 1.0.2 - Filtered nodes to most useful ones
+- 1.0.1 - Filtered nodes to most useful ones
 - 1.0.0 — Initial release of the VideoDB API n8n node
