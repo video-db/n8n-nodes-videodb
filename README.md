@@ -2,9 +2,9 @@
 
 # n8n-nodes-videodb
 
-This is an n8n community node. It lets you use the [VideoDB](https://videodb.io) in your n8n workflows.
+This is an n8n community node. It lets you use the [VideoDB](https://videodb.com) in your n8n workflows.
 
-Power your video and media automation with VideoDB. Access advanced video indexing, search, and management features. Get started at https://videodb.io
+Power your video and media automation with VideoDB. Access advanced video indexing, search, and management features. Get started at https://console.videodb.io
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
