@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4] - 2025-09-22
+
+### Fixed
+
+- Updated `README.md` links to correct destinations.
+
 ## [1.0.3] - 2025-09-16
 
 ### Added
