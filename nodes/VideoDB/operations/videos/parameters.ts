@@ -547,6 +547,4 @@ parameters.push({
 	displayOptions: { show: { operation: ['addSubtitle'] } },
 });
 
-// #endregion
-
 export default parameters;
