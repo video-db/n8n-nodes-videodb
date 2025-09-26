@@ -6,10 +6,11 @@ const operations = [
 		endpoint: '/timeline',
 		method: 'POST',
 		details: {
-			name: 'Compile Timeline',
+			name: "Compile Timeline (VideoDB's Video Editor)",
 			value: 'compileTimeline',
-			description: 'Build a multi-track timeline (video + overlays) and get a stream/player URL',
-			action: 'Compile Timeline',
+			description:
+				"VideoDB's Video Editor - Build a multi-track timeline (video + overlays) and get a stream/player URL",
+			action: "Compile Timeline (VideoDB's Video Editor)",
 		},
 		parameters: parameters.filter((p) =>
 			p.displayOptions?.show?.operation?.includes('compileTimeline'),
