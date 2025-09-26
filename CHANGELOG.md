@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.5] - 2025-09-26
+
+### Added
+
+- Added the `Create Timeline (VideoDB's Video Editor)` action
+
 ## [1.0.4] - 2025-09-22
 
 ### Fixed
