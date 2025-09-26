@@ -3,8 +3,9 @@ import audio from './audio';
 import image from './image';
 import client from './client';
 import collection from './collection';
+import timeline from './timeline';
 
-const allOperations = [...videos, ...audio, ...image, ...client, ...collection];
+const allOperations = [...videos, ...audio, ...image, ...client, ...collection, ...timeline];
 
 const map = Object.fromEntries(allOperations.map((op) => [op.key, op]));
 
