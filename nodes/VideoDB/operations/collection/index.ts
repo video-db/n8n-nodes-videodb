@@ -161,6 +161,7 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
 			text: params.text,
+			audio_type: 'voice',
 			voice_name: params.voice_name,
 			callback_url: params.callback_url,
 		}),
