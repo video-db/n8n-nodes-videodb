@@ -67,6 +67,8 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
+- 1.0.6 - `generateVoice` now sends `audio_type: voice`
+- 1.0.5 - Added the `Create Timeline (VideoDB's Video Editor)` action
 - 1.0.4 - README update
 - 1.0.3 - Dropdowns for `collection`, `image`, `audio` and `video` IDs along with minor bug fixes
 - 1.0.2 - Filtered nodes to most useful ones
