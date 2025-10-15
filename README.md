@@ -67,6 +67,7 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
+- 1.0.7 - Added `pairedItem` item linking and robust error handling with `continueOnFail` and `NodeOperationError`
 - 1.0.6 - `generateVoice` now sends `audio_type: voice`
 - 1.0.5 - Added the `Create Timeline (VideoDB's Video Editor)` action
 - 1.0.4 - README update

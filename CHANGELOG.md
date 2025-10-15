@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7] - 2025-10-15
+
+### Fixed
+
+- Added `pairedItem` to all output items for proper item linking in n8n.
+- Implemented error handling with `continueOnFail`, `NodeApiError` and `NodeOperationError`.
+
 ## [1.0.6] - 2025-10-15
 
 ### Changed
