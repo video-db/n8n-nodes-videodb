@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.6] - 2025-10-15
+
+### Changed
+
+- `generateVoice` now explicitly sends `audio_type: voice` in the request body.
+
 ## [1.0.5] - 2025-09-26
 
 ### Added
