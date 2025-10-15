@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.8] - 2025-10-15
+
+### Fixed
+
+- Explicitly pass `error` message in JSON output when `continueOnFail` is enabled.
+
 ## [1.0.7] - 2025-10-15
 
 ### Fixed

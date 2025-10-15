@@ -186,7 +186,7 @@ export class VideoDb implements INodeType {
 			} catch (error) {
 				if (this.continueOnFail()) {
 					results.push({
-						json: error,
+						json: { error: error.message ?? 'Unknown error occurred' },
 						pairedItem: { item: i },
 					});
 					continue;
