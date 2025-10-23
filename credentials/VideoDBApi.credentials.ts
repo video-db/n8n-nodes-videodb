@@ -14,11 +14,11 @@ export class VideoDBApi implements ICredentialType {
 	properties: INodeProperties[] = [
 		{
 			displayName:
-				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>.',
+				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>',
 			name: 'apiKeyNotice',
 			type: 'notice',
 			default:
-				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>.',
+				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>',
 		},
 		{
 			displayName: 'API Key',
