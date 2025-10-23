@@ -9,9 +9,17 @@ export class VideoDBApi implements ICredentialType {
 	name = 'videoDBApi';
 	displayName = 'VideoDB API';
 	icon = 'file:../nodes/VideoDB/VideoDB.svg' as const;
-	documentationUrl = 'https://docs.videodb.io/';
+	documentationUrl = 'https://docs.videodb.io?utm_source=n8n';
 
 	properties: INodeProperties[] = [
+		{
+			displayName:
+				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>.',
+			name: 'apiKeyNotice',
+			type: 'notice',
+			default:
+				'Get your API key from the <a href="https://console.videodb.io?utm_source=n8n" target="_blank" class="n8n-link">VideoDB Console</a>.',
+		},
 		{
 			displayName: 'API Key',
 			name: 'apiKey',
