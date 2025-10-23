@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9] - 2025-01-27
+
+### Improved
+
+- Added helpful notice in credentials to guide users to VideoDB Console for API key retrieval
+- Added UTM tracking parameters to all documentation links for better analytics
+
 ## [1.0.8] - 2025-10-15
 
 ### Fixed

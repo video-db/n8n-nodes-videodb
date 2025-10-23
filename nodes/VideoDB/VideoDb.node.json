@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://docs.videodb.io/"
+				"url": "https://docs.videodb.io?utm_source=n8n"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.videodb.io/"
+				"url": "https://docs.videodb.io?utm_source=n8n"
 			}
 		]
 	}
