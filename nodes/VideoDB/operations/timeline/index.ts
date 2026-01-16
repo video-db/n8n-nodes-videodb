@@ -83,7 +83,8 @@ const operations = [
 				add(asset, 'duration', toNum(t.duration));
 
 				// Style overrides only if user added them
-				const styleGroup = t.style?.style?.[0] || {};
+				const styleData = t.style?.style;
+				const styleGroup = Array.isArray(styleData) ? styleData[0] || {} : styleData || {};
 				const styleKeys = Object.keys(styleGroup).filter(
 					(k) => styleGroup[k] !== '' && styleGroup[k] !== undefined && styleGroup[k] !== null,
 				);
