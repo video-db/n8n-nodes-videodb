@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.0.9] - 2025-01-27
+## [1.0.9] - 2026-01-16
+
+### Fixed
+
+- Fixed timeline overlay text style parsing in VideoDB Timeline Editor
 
 ### Improved
 
