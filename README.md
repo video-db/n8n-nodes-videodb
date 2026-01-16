@@ -25,13 +25,24 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-This node presently supports video operations for:
+This node supports the following operations:
 
-- Fetching videos in a collection
-- Indexing a video
-- Getting a video transcript
-- Searching through a video
-- Uploading a video by URL
+**Video**
+- Fetch, upload, index, search, and manage videos
+- Get transcripts and generate streams
+- Scene extraction and indexing
+- Add subtitles
+
+**Timeline Editor**
+- Compile multi-track timelines with inline videos
+- Overlay images, audio, and text with custom styling
+
+**Audio & Images**
+- Upload and manage audio/image assets
+- Generate voice and URLs
+
+**Collections**
+- Create, list, and manage collections
 
 ## Credentials
 
@@ -67,7 +78,7 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
-- 1.0.9 - Added helpful notice in credentials and UTM tracking for better user experience and analytics
+- 1.0.9 - Fixed timeline overlay text style parsing; added helpful notice in credentials and UTM tracking
 - 1.0.8 - Explicitly pass `error` message in JSON output when `continueOnFail` is enabled
 - 1.0.7 - Added `pairedItem` item linking and robust error handling with `continueOnFail` and `NodeOperationError`
 - 1.0.6 - `generateVoice` now sends `audio_type: voice`
