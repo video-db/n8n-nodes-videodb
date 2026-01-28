@@ -190,6 +190,27 @@ const operations = [
 					: params.subtitle_style,
 		}),
 	},
+	{
+		key: 'translateTranscript',
+		endpoint: (params: any) =>
+			`/collection/${params.collection_id}/video/${params.video_id}/translate`,
+		method: 'POST',
+		details: {
+			name: 'Translate Transcript',
+			value: 'translateTranscript',
+			description: 'Translate transcript of a video to a given language',
+			action: 'Translate transcript',
+		},
+		parameters: parameters.filter((p) =>
+			p.displayOptions?.show?.operation?.includes('translateTranscript'),
+		),
+		buildQuery: () => ({}),
+		buildBody: (params: any) => ({
+			language: params.language,
+			additional_notes: params.additional_notes,
+			callback_url: params.callback_url,
+		}),
+	},
 ];
 
 export default operations;
