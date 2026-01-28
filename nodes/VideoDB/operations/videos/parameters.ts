@@ -337,10 +337,6 @@ parameters.push(
 // Translate Transcript
 parameters.push(
 	{
-		...collectionIdProperty,
-		displayOptions: { show: { operation: ['translateTranscript'] } },
-	},
-	{
 		displayName: 'Language',
 		name: 'language',
 		type: 'string',

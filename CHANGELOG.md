@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0] - 2026-01-28
+
+### Added
+
+- Added `Translate Transcript` operation for videos - translate video transcripts to any target language with optional style notes
+
 ## [1.0.9] - 2026-01-16
 
 ### Fixed

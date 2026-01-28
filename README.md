@@ -30,6 +30,7 @@ This node supports the following operations:
 **Video**
 - Fetch, upload, index, search, and manage videos
 - Get transcripts and generate streams
+- Translate transcripts to any language
 - Scene extraction and indexing
 - Add subtitles
 
@@ -78,6 +79,7 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
+- 1.1.0 - Added `Translate Transcript` operation for videos
 - 1.0.9 - Fixed timeline overlay text style parsing; added helpful notice in credentials and UTM tracking
 - 1.0.8 - Explicitly pass `error` message in JSON output when `continueOnFail` is enabled
 - 1.0.7 - Added `pairedItem` item linking and robust error handling with `continueOnFail` and `NodeOperationError`

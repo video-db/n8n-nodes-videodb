@@ -1,6 +1,6 @@
 {
 	"name": "@videodb/n8n-nodes-videodb",
-	"version": "1.0.9",
+	"version": "1.1.0",
 	"description": "An n8n node for VideoDB",
 	"keywords": [
 		"n8n-community-node-package"
