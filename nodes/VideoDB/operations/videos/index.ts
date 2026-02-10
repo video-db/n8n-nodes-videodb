@@ -184,10 +184,29 @@ const operations = [
 		buildQuery: () => ({}),
 		buildBody: (params: any) => ({
 			type: 'add_subtitles',
-			subtitle_style:
-				typeof params.subtitle_style === 'string'
-					? JSON.parse(params.subtitle_style)
-					: params.subtitle_style,
+			subtitle_style: {
+				fontName: params.fontName,
+				fontSize: params.fontSize,
+				primaryColour: params.primaryColour,
+				secondaryColour: params.secondaryColour,
+				outlineColour: params.outlineColour,
+				backColour: params.backColour,
+				bold: params.bold,
+				italic: params.italic,
+				underline: params.underline,
+				strikeOut: params.strikeOut,
+				scaleX: params.scaleX,
+				scaleY: params.scaleY,
+				spacing: params.spacing,
+				angle: params.angle,
+				borderStyle: params.borderStyle,
+				outline: params.outline,
+				shadow: params.shadow,
+				alignment: params.alignment,
+				marginL: params.marginL,
+				marginR: params.marginR,
+				marginV: params.marginV,
+			},
 		}),
 	},
 	{
