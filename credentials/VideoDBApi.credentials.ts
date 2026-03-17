@@ -5,6 +5,8 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
+import { version } from '../package.json';
+
 export class VideoDBApi implements ICredentialType {
 	name = 'videoDBApi';
 	displayName = 'VideoDB API';
@@ -43,7 +45,7 @@ export class VideoDBApi implements ICredentialType {
 		properties: {
 			headers: {
 				'x-access-token': '={{$credentials.apiKey}}',
-				'x-videodb-client': 'videodb-python/0.2.14',
+				'x-videodb-client': `n8n-nodes-videodb/${version}`,
 				'Content-Type': 'application/json',
 			},
 		},
@@ -55,7 +57,7 @@ export class VideoDBApi implements ICredentialType {
 			method: 'GET',
 			headers: {
 				'x-access-token': '={{$credentials.apiKey}}',
-				'x-videodb-client': 'videodb-python/0.2.14',
+				'x-videodb-client': `n8n-nodes-videodb/${version}`,
 				'Content-Type': 'application/json',
 			},
 		},

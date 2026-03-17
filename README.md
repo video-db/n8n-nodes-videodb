@@ -79,6 +79,7 @@ You should now be able to search for and use the VideoDB node in your n8n workfl
 
 ## Version history
 
+- 1.1.1 - Updated `x-videodb-client` header to use dynamic version
 - 1.1.0 - Added `Translate Transcript` operation for videos
 - 1.0.9 - Fixed timeline overlay text style parsing; added helpful notice in credentials and UTM tracking
 - 1.0.8 - Explicitly pass `error` message in JSON output when `continueOnFail` is enabled

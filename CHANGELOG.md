@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1] - 2026-03-17
+
+### Changed
+
+- Updated `x-videodb-client` header to use dynamic version from package.json (`n8n-nodes-videodb/<version>`)
+
 ## [1.1.0] - 2026-01-28
 
 ### Added
